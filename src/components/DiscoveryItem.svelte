@@ -10,11 +10,11 @@
 </script>
 
 <div class="the-item">
-  <a target="_blank" href={item_url} title={item_title}>>
+  <a target="_blank" href={item_url} title={item_title}>
     <div class="the-picture">
       <ImageLoader src={picture_url} alt={name}></ImageLoader>
     <div class="the-name" title={name}>{name}</div>
-    <div class="the-brand" title={brand}></div>
+    <div class="the-brand" title={brand}>{brand}</div>
     <div class="the-price">{price}&nbsp;{currency}</div>
   </a>
 </div>
