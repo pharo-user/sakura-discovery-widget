@@ -3,5 +3,11 @@
   import ComponentWithImage from './components/ComponentWithImage.svelte';
 </script>
 
-<ComponentWithImage></ComponentWithImage>
-<DiscoveryWidget widget_id="1234" widget_title="test"></DiscoveryWidget>
+<section class="section">
+  <div class="container">
+    <DiscoveryWidget widget_id="1234" widget_title="test"></DiscoveryWidget>
+    <!--  
+      <ComponentWithImage></ComponentWithImage>
+    -->
+  </div>
+</section>
