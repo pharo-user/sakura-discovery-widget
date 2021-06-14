@@ -1,6 +1,6 @@
 
 <script>
-  import lazyLoad from "./lazyLoad";
+  import lazyLoad from "./lazyload";
   const urlBase = "https://picsum.photos/seed/";
   const urlSuffix = "/800/800/";
   let imageSrcs = [...Array(50).keys()].map(num => urlBase + num.toString() + urlSuffix);
