@@ -1,12 +1,19 @@
 <script>
   import DiscoveryItem from './DiscoveryItem.svelte';
-  import items from './FetchItems';
+  import { fetchById } from './FetchItems';
+  import { onMount } from "svelte";
+
+  onMount(readAll);
+
   export let widget_id;
   export let widget_title;
-  const num_items = 4;
+  let num_items = 4;
   let first_item = 0;
+  let items = [];
 
-  let items2=items.slice(0,4)
+  async function readAll() {
+    [items, widget_title] = await fetchById(widget_id);
+  }
 
   function leftClick() {
     if (first_item >= num_items)  
@@ -36,7 +43,7 @@
     {widget_title}
     <div class="networked-by">
       <span>Networked by</span>
-      <a class="sakura-link" href="http://sakura.eco"></a>
+      <a class="sakura-link" href="http://sakura.eco">Sakura.eco</a>
     </div>
     {widget_id}
   </div>
@@ -62,6 +69,11 @@
       <span class="icon" on:click={rightClick}>
         <i class="fas fa-arrow-right"></i>
       </span>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <input type=range bind:value={first_item} max={items.length}>
     </div>
   </div>
 </div>

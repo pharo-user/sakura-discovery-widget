@@ -4,8 +4,48 @@
     console.log(randomNum);
     return Math.round(randomNum);
   }
+  
+  function decode_i18n(d) {
+    if (typeof d == "string")
+      return d;
+    if (d == [])
+      return "";
+    if (Array.isArray(d) && d.length > 0)
+      return d[0];
+    if (typeof d == "object")
+      return d.en;
+    return "";
+  }
 
-  let items=[
+
+  export async function fetchById(id) {
+
+    var url = "https://sakura.eco/api/widget/articles/"+id;
+   
+    return await fetch(url, { mode: 'cors'} )
+    .then((r) => r.json())
+      .then((d) => {
+        var items = [];
+        var e,art;
+        for (e in d.articles) {
+          art = d.articles[e];
+          //console.log(art);
+          items.push( {
+            "item_url" : art.url,
+            "brand" : art.brand,
+            "price" : art.price,
+            "name" : decode_i18n(art.description_i18n),
+            "item_title" : decode_i18n(art.title_i18n),
+            "currency" : art.currency,
+            "picture_url" : art.photo
+          })
+        };
+        console.log(items);
+        return [items,decode_i18n(d.name)];
+      })
+  }
+
+  let itemsExample=[
     {
       picture_url:`https://picsum.photos/seed/${rand(0,200)}/800/800`,
       item_url: 'https://confettibird.no/product/confetti-mama-icy-blue/',
@@ -202,4 +242,4 @@
     }
   ];
 
-  export default items;
+ // export default items;
