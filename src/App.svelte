@@ -6,8 +6,17 @@
  
 </script>
 
-<section class="section">
-  <div class="container">
+<style>
+.container {
+  margin: 0px 0px;
+}
+.section {
+  padding: 0px 0px;
+}
+</style>
+
+<section>
+  <div>
     <DiscoveryWidget widget_id={id} widget_title="test"></DiscoveryWidget>
     <!--  
       <ComponentWithImage></ComponentWithImage>
