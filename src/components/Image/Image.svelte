@@ -17,9 +17,9 @@
 
 <style>
   img {
-    height: 200px;
+    height: auto;
+    max-width: 100%;
     opacity: 0;
-    transition: opacity 1200ms ease-out;
   }
   img.loaded {
     opacity: 1;
