@@ -23,8 +23,11 @@
     var url = "https://sakura.eco/api/widget/articles/"+id;
    
     return await fetch(url, { mode: 'cors'} )
-    .then((r) => r.json())
+    .then((r) => {
+      r.json()
+    })
       .then((d) => {
+        console.log("members json: ", d);
         var items = [];
         var e,art;
         for (e in d.articles) {

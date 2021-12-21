@@ -7,7 +7,7 @@
 
   export let widget_id;
   export let widget_title;
-  let num_items = 6;
+  let num_items = 4;
   let first_item = 0;
   let items = [];
 
@@ -29,8 +29,9 @@
 
 </script>
 
+
 <style>
-	p {
+	/* p {
 		color: purple;
 		font-family: 'Comic Sans MS', cursive;
 		font-size: 2em;
@@ -38,17 +39,6 @@
   input {
     width: 100%;
     margin-top: 15px;
-  }
-  .sakura-link {
-    display: block;
-    flex-shrink: 0;
-    width: 100px;
-    height: 15px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("http://www.sakura.eco/img/logo-2021-1.png");
-    margin-left: 5px;
-    margin-bottom: 4px;
   }
   .networked-by {
     white-space: nowrap;
@@ -90,46 +80,96 @@
   .column .is-3 {
     width: 208px;
     margin-right: 10px;
+  } */
+  .top-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 35px;
+    padding-left: 45px;
   }
+  .heading-item2 {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .sakura-link {
+    display: block;
+    flex-shrink: 0;
+    width: 100px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("http://www.sakura.eco/img/logo-2021-1.png");
+    margin-left: 5px;
+    margin-bottom: 4px;
+  }
+  .networked-by {
+    white-space: nowrap;
+    text-transform: none;
+    display: flex;
+    align-items: flex-end;
+  }
+  .discovery-container {
+    display: grid;
+    grid-template-columns: 35px auto 35px;
+  }
+  .discovery-content {
+    display: flex;
+  }
+  .arrow-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+  }
+  .arrow-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+  }
+
+
+  /* .the-item {
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+  }
+  .item-anchor {
+    text-decoration: none;
+    text-align: center;
+    color: inherit;
+  } */
 </style>
 
-<div class="landing-discovery-bridge">
-
-  <div class="columns">
-    <div class="column is-narrow">
-      <a href="#" class="column is-1 press-left" on:click={leftClick}>
-        <img alt="" src="/img/press-left.svg">
-      </a> 
-    </div>
-
-    <div class="column is-narrow">
-      <div class="the-title">
-        <span  class="title-itself">
-          {widget_title}
-        </span>
-        <div class="networked-by">
-          <span>Networked by</span>
-          <a class="sakura-link" href="http://sakura.eco"></a>
-        </div>
-    </div>
-      <div class="columns">
-        {#each items.slice(first_item, first_item+num_items) as item, i}
-          <div class="column is-3">
-            <DiscoveryItem  {...item}></DiscoveryItem>
-          </div>
-        {/each}
-      </div>
-      <div class="columns">
-        <div class="column">
-          <input type=range bind:value={first_item} max={items.length}>
-        </div>
-      </div>
-    </div>
-
-    <div class="column is-narrow">
-      <a href="#" class="column is-1 press-right" on:click={rightClick}>
-        <img alt="" src="/img/press-right.svg">
-      </a> 
+<div class="top-container">
+  <div class="heading-item1">
+    <span  class="title-itself">
+      <h1 class="title is-4">{widget_title}</h1>
+    </span>
+  </div>
+  <div class="heading-item2">
+    <div class="networked-by">
+      <span>Networked by</span>
+      <a class="sakura-link" href="http://sakura.eco"></a>
     </div>
   </div>
 </div>
+<div class="discovery-container">
+  <div class="arrow-left">
+    <a href="#" class="left-arrow-link" on:click={leftClick}>
+      <img alt="left arrow" src="/img/press-left.svg" class="">
+    </a> 
+  </div>
+  <div class="discovery-content">
+    {#each items.slice(first_item, first_item+num_items) as item, i}
+      <DiscoveryItem  {...item}></DiscoveryItem>
+    {/each}
+  </div>
+  <div class="arrow-right">
+    <a href="#" class="right-arrow-link" on:click={rightClick}>
+      <img alt="" src="/img/press-right.svg" class="">
+    </a> 
+  </div>
+</div>
+
