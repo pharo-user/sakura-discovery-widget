@@ -65,7 +65,7 @@
     width: 70%;
     margin: auto;
     background-color: #d8d8d8;
-    margin-bottom: 32px;
+    margin-bottom: 25px;
   } 
   .the-name {
     text-transform: uppercase;
