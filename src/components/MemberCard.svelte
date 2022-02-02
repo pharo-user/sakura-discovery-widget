@@ -1,5 +1,6 @@
 <script>
-  import { fetchById } from './FetchMembers';
+  import { fetchById as fetchMemberById} from './FetchMembers';
+  import {fetchById as fetchItemsById } from './FetchItems';
   import { onMount } from "svelte";
 
   import DiscoveryWidget from './DiscoveryWidget.svelte';
@@ -7,16 +8,25 @@
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.has('id') ? urlParams.get('id') : "3c9988cd1b790d009ea1ecd30fbeedc5";
 
+
   onMount(readAll);
 
-  export let member_id;
+
+  export let company_id = 1;
   let profileName = "Member Card";
   let profileImage = "img/member.jpg";
   let profileDetail = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, sem in condimentum scelerisque, mauris massa vehicula diam,";
   let websiteUrl = "member.com";
 
   async function readAll() {
-    [name, photo, detail, site_url ] = await fetchById(member_id);
+    const {msg, data} = await fetchMemberById(company_id);
+    if (msg === "found") {
+      profileName = data.forename + " " + data.surname;
+      profileImage = (data.logo !== undefined && data.logo !== null) ? data.logo : "img/member.jpg";
+      profileDetail = (data.background !== undefined) ? data.background : "";
+      websiteUrl = (data.url !== undefined) ? data.url: "";
+    }
+    await fetchItemsById(id);
   }
 
 </script>

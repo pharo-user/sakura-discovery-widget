@@ -70,7 +70,9 @@ export let mailAddress;
    <div class="profile-data-container">
      <img src={profileImage} alt={profileName} class="profile-image"/>
      <div class="profile-data">
-       <h2>{profileDetail}</h2>
+       {#if profileDetail}
+         <h2>{profileDetail}</h2>
+       {/if}
        {#if websiteUrl}
          <a href={"https://"+websiteUrl} class="site-link" target="_blank">{websiteUrl}</a>
        {/if}

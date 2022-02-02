@@ -20,29 +20,18 @@
 
   export async function fetchById(id) {
 
-    var url = "https://sakura.eco/api/widget/articles/"+id;
+    var url = `http://127.0.0.1:8081/api/networkCardData?id=${id}`;
    
-    return await fetch(url, { mode: 'cors'} )
-    .then((r) => r.json())
-      .then((d) => {
-        var items = [];
-        var e,art;
-        for (e in d.articles) {
-          art = d.articles[e];
-          //console.log(art);
-          items.push( {
-            "item_url" : art.url,
-            "brand" : art.brand,
-            "price" : art.price,
-            "name" : decode_i18n(art.description_i18n),
-            "item_title" : decode_i18n(art.title_i18n),
-            "currency" : art.currency,
-            "picture_url" : art.photo
-          })
-        };
-        console.log(items);
-        return [items,decode_i18n(d.name)];
-      })
+    return await fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      console.log("network's response:", data);
+      return data;
+    })
+    .catch((err) => {
+      console.err("Error encountered: ", err);
+    })
+      
   }
 
   let itemsExample=[

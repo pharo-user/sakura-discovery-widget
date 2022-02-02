@@ -8,16 +8,23 @@
   
     onMount(readAll);
   
-    export let member_id;
+    export let company_id = 1;
     let networkName = "NETWORK NAME";
     let networkLogo = "img/network.png";
     let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
     let membersCount = 15;
-    let payingRate = "N/A";
-    let mailAddress = "helloworld@hello.com"
+    let payingRate = 0;
+    let mailAddress = "helloworld@hello.com";
   
     async function readAll() {
-      [name, photo, detail, site_url ] = await fetchById(member_id);
+      const {msg, data} = await fetchById(company_id);
+      if (msg === "found") {
+        networkName = (data.name !== undefined) ? data.name[Object.keys(data.name)[0]].toUpperCase() : "NETWORK NAME";
+        networkLogo = (data.logo !== undefined && data.logo !== null) ? data.logo[Object.keys(data.logo)[0]] : "img/network.png";
+        description = (data.description !== undefined && data.description !== null) ? data.description[Object.keys(data.description)[0]] : "";
+        membersCount = 15;
+        mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
+      }
     }
   
 </script>
