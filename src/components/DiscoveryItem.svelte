@@ -5,7 +5,7 @@
 	export let item_url;
 	export let item_title;
 	export let name;
-	export let brand;
+	// export let brand;
 	export let price;
 	export let currency;
 </script>

@@ -7,12 +7,11 @@
   import ProfileInfoSection from './ProfileInfoSection.svelte';
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.has('id') ? urlParams.get('id') : "3c9988cd1b790d009ea1ecd30fbeedc5";
+  const company_id = urlParams.has('company_id') ? urlParams.get('company_id') : 1;
 
 
   onMount(readAll);
-
-
-  export let company_id = 1;
+  
   let profileName = "Member Card";
   let profileImage = "img/member.jpg";
   let profileDetail = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, sem in condimentum scelerisque, mauris massa vehicula diam,";
@@ -26,7 +25,6 @@
       profileDetail = (data.background !== undefined) ? data.background : "";
       websiteUrl = (data.url !== undefined) ? data.url: "";
     }
-    await fetchItemsById(id);
   }
 
 </script>

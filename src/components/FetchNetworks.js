@@ -18,9 +18,9 @@
   }
 
 
-  export async function fetchById(id) {
+  export async function fetchById(id, companyId) {
 
-    var url = `http://127.0.0.1:8081/api/networkCardData?id=${id}`;
+    var url = `http://127.0.0.1:8081/api/networkCardData?id=${id}&companyId=${companyId})`;
    
     return await fetch(url)
     .then(r => r.json())

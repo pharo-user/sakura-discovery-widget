@@ -20,11 +20,12 @@
 
   export async function fetchById(id) {
 
-    var url = "https://sakura.eco/api/widget/articles/"+id;
+    var url = "http://127.0.0.1:8081/api/widget/articles/"+id;
    
-    return await fetch(url, { mode: 'cors'} )
+    return await fetch(url)
     .then((r) => r.json())
       .then((d) => {
+        console.log("items in json: ", d)
         var items = [];
         var e,art;
         for (e in d.articles) {

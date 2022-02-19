@@ -124,13 +124,13 @@
   <div class="heading-item2">
     <div class="networked-by">
       <span>Networked by</span>
-      <a class="sakura-link" href="http://sakura.eco"></a>
+      <!-- <a class="sakura-link" href="http://sakura.eco"></a> -->
     </div>
   </div>
 </div>
 <div class="discovery-container">
   <div class="arrow-left">
-    <a href="#" class="left-arrow-link" on:click={leftClick}>
+    <a href="#/" class="left-arrow-link" on:click={leftClick}>
       <img alt="left arrow" src="/img/press-left.svg" class="">
     </a>
   </div>
@@ -172,7 +172,7 @@
     </div>
   </div>
   <div class="arrow-right">
-    <a href="#" class="right-arrow-link" on:click={rightClick}>
+    <a href="#/" class="right-arrow-link" on:click={rightClick}>
       <img alt="" src="/img/press-right.svg" class="">
     </a> 
   </div>
