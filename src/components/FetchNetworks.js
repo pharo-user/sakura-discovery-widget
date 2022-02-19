@@ -20,7 +20,7 @@
 
   export async function fetchById(id) {
 
-    var url = `http://127.0.0.1:8081/api/networkCardData?id=${id}`;
+    var url = `https://sakura.eco/api/networkCardData?id=${id}`;
    
     return await fetch(url)
     .then(r => r.json())

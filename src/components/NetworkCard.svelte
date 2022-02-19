@@ -5,7 +5,8 @@
     import ProfileInfoSection from './ProfileInfoSection.svelte';
     const urlParams = new URLSearchParams(window.location.search);
     const networkId = urlParams.get('id');
-  
+    const widgetKey = urlParams.get('widgetKey');
+
     onMount(readAll);
   
     let networkName = "NETWORK NAME";
@@ -14,18 +15,16 @@
     let membersCount = 15;
     let payingRate = 0; 
     let mailAddress = "helloworld@hello.com";
-    let widgetKey = "c5918299aa8b0d00b1ac747406ba104e";
 
     async function readAll() {
       const {msg, data} = await fetchById(networkId);
       if (msg == "found") {
-        networkName = (data.name !== undefined) ? data.name[Object.keys(data.name)[0]].toUpperCase() : "NETWORK NAMEsdoi";
+        networkName = (data.name !== undefined) ? data.name : "NETWORK NAMEsdoi";
         console.log(networkName);
-        networkLogo = (data.logo !== undefined && data.logo !== null) ? data.logo[Object.keys(data.logo)[0]] : "img/network.png";
-        description = (data.description !== undefined && data.description !== null) ? data.description[Object.keys(data.description)[0]] : "";
+        networkLogo = (data.logo !== undefined && data.logo !== null) ? data.logo : "img/network.png";
+        description = (data.description !== undefined && data.description !== null) ? data.description : "";
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
-        widgetKey = data.widgetKey;
       }
     }
     
