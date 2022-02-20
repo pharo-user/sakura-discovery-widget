@@ -3,12 +3,25 @@
     import { onMount } from "svelte";
     import DiscoveryWidget from './DiscoveryWidget.svelte';
     import ProfileInfoSection from './ProfileInfoSection.svelte';
+ 
     const urlParams = new URLSearchParams(window.location.search);
     const networkId = urlParams.get('id');
     const widgetKey = urlParams.get('widgetKey');
 
     onMount(readAll);
   
+    function decode_i18n(d) {
+    if (typeof d == "string")
+      return d;
+    if (d == [])
+      return "";
+    if (Array.isArray(d) && d.length > 0)
+      return d[0];
+    if (typeof d == "object")
+      return d.en;
+    return "";
+    }
+
     let networkName = "NETWORK NAME";
     let networkLogo = "img/network.png";
     let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
@@ -19,10 +32,10 @@
     async function readAll() {
       const {msg, data} = await fetchById(networkId);
       if (msg == "found") {
-        networkName = (data.name !== undefined) ? data.name : "NETWORK NAMEsdoi";
+        networkName = (data.name !== undefined) ? decode_i18n(data.name) : "NETWORK NAMEsdoi";
         console.log(networkName);
         networkLogo = (data.logo !== undefined && data.logo !== null) ? data.logo : "img/network.png";
-        description = (data.description !== undefined && data.description !== null) ? data.description : "";
+        description = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description) : "";
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
       }
@@ -49,7 +62,7 @@
     payingRate={payingRate}
     mailAddress={mailAddress}
   />
-  <DiscoveryWidget widget_id={widgetKey + "/" + networkId} widget_title={networkName}></DiscoveryWidget>
+  <DiscoveryWidget widget_id={widgetKey + "/" + networkId} widget_title={""}></DiscoveryWidget>
 </div>
   
   
