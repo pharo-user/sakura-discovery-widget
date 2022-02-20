@@ -5,10 +5,23 @@
 
   import DiscoveryWidget from './DiscoveryWidget.svelte';
   import ProfileInfoSection from './ProfileInfoSection.svelte';
+
+    
+  function decode_i18n(d) {
+    if (typeof d == "string")
+      return d;
+    if (d == [])
+      return "";
+    if (Array.isArray(d) && d.length > 0)
+      return d[0];
+    if (typeof d == "object")
+      return d.en;
+    return "";
+    }
+
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.has('id') ? urlParams.get('id') : 1;
-  const company_id = urlParams.has('company_id') ? urlParams.get('company_id') : 1;
-
+  const widgetKey = urlParams.get('widgetKey');
 
   onMount(readAll);
   
@@ -20,9 +33,9 @@
   async function readAll() {
     const {msg, data} = await fetchMemberById(id);
     if (msg === "found") {
-      profileName = data.forename + " " + data.surname;
+      profileName = decode_i18n(data.name);
       profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "img/member.jpg";
-      profileDetail = (data.background !== undefined && data.background !== null) ? "https://www.sakura.eco/media/" + data.background : "";
+      profileDetail = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description): "";
       websiteUrl = (data.url !== undefined && data.url !== null) ? data.url: "";
     }
   }

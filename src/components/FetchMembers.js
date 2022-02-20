@@ -21,7 +21,7 @@
   export async function fetchById(id) {
     console.log("fetchById: id", id);
 
-    var url = `http://localhost:8080/api/memberCardData?id=${id}`;
+    var url = `https://sakura.eco/api/memberCardData?id=${id}`;
    
     return await fetch(url)
     .then(response => response.json())
