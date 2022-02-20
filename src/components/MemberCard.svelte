@@ -54,5 +54,5 @@
 </style>
 <div class="member-card">
   <ProfileInfoSection profileName={profileName} profileImage={profileImage} profileDetail={profileDetail} websiteUrl={websiteUrl}/>
-  <DiscoveryWidget widget_id={id} widget_title=""></DiscoveryWidget>
+  <DiscoveryWidget widget_id={widgetKey} widget_title=""></DiscoveryWidget>
 </div>
