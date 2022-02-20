@@ -118,13 +118,13 @@
 <div class="top-container">
   <div class="heading-item1">
     <span  class="title-itself">
-      <h1 class="title is-4">{widget_title}</h1>
+      <h1 class="title is-4">{""}</h1>
     </span>
   </div>
   <div class="heading-item2">
     <div class="networked-by">
       <span>Networked by</span>
-      <!-- <a class="sakura-link" href="http://sakura.eco"></a> -->
+       <a class="sakura-link" href="http://sakura.eco"></a> 
     </div>
   </div>
 </div>

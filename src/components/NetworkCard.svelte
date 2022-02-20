@@ -34,7 +34,7 @@
       if (msg == "found") {
         networkName = (data.name !== undefined) ? decode_i18n(data.name) : "NETWORK NAMEsdoi";
         console.log(networkName);
-        networkLogo = (data.logo !== undefined && data.logo !== null) ? data.logo : "img/network.png";
+        networkLogo = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "img/network.png";
         description = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description) : "";
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
