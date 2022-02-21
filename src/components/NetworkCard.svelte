@@ -6,7 +6,6 @@
  
     const urlParams = new URLSearchParams(window.location.search);
     const networkId = urlParams.get('id');
-    const widgetKey = urlParams.get('widgetKey');
 
     onMount(readAll);
   
@@ -28,6 +27,7 @@
     let membersCount = 15;
     let payingRate = 0; 
     let mailAddress = "helloworld@hello.com";
+    let widgetKey = null;
 
     async function readAll() {
       const {msg, data} = await fetchById(networkId);
@@ -38,6 +38,7 @@
         description = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description) : "";
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
+        widgetKey = data.widgetKey;
       }
     }
     
@@ -62,7 +63,9 @@
     payingRate={payingRate}
     mailAddress={mailAddress}
   />
-  <DiscoveryWidget widget_id={widgetKey + "/" + networkId} widget_title={""}></DiscoveryWidget>
+   {#if widgetKey}
+    <DiscoveryWidget widget_id={widgetKey + "/" + networkId} widget_title={""}></DiscoveryWidget>
+   {/if}
 </div>
   
   
