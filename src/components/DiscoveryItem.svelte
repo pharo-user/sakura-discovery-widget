@@ -1,13 +1,51 @@
 <script>
   import ImageLoader from './Image/ImageLoader.svelte';
+  import { fetchById } from './FetchProduct';
+  import { onMount } from "svelte";
+
+  export let id;
+
+  onMount(readAll);
   
-	export let picture_url;
-	export let item_url;
-	export let item_title;
-	export let name;
-	// export let brand;
-	export let price;
-	export let currency;
+  function decode_i18n(d) {
+  if (typeof d == "string")
+    return d;
+  if (d == [])
+    return "";
+  if (Array.isArray(d) && d.length > 0)
+    return d[0];
+  if (typeof d == "object")
+    return d.en;
+  return "";
+  }
+
+  let networkName = "NETWORK NAME";
+  let networkLogo = "img/network.png";
+  let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
+  let membersCount = 15;
+  let payingRate = 0; 
+  let mailAddress = "helloworld@hello.com";
+  let widgetKey = null;
+
+	let picture_url;
+	let item_url;
+	let item_title;
+	let name;
+	// let brand;
+	let price;
+	let currency;
+
+  async function readAll() {
+    const {msg, data} = await fetchById(id);
+    if (msg == "found") {
+      picture_url = data.photo;
+      item_url = data.url;
+      item_title = decode_i18n(data.title_i18n);
+      price = data.price;
+      currency = data.currency;
+    }
+  }
+    
 </script>
 
 <style>
@@ -44,17 +82,7 @@
   .the-picture {
     width: 208px;
     height: 264px;
-    background-color: #d8d8d8;
-    margin-bottom: 32px;
-  } */
-
-  .the-item {
-    box-sizing: border-box;
-    width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-decoration: none;
-  }
+    background-color: #d8d8d8;item_url
   .item-anchor {
     text-decoration: none;
     text-align: center;
@@ -97,6 +125,7 @@
   }
 </style>
 
+{#if item_title}
 <div class="the-item">
   <a target="_blank" href={item_url} title={item_title} class="item-anchor">
     <div class="the-picture">
@@ -104,6 +133,9 @@
     </div>
     <div class="the-name" title={item_title}>{item_title}</div>
     <!-- <div class="the-brand" title={brand}>{brand}</div> -->
-    <div class="the-price">{price}&nbsp;{currency}</div>
+    {#if price}
+      <div class="the-price">{price}&nbsp;{currency}</div>
+    {/if}
   </a>
 </div>
+{/if}
