@@ -6,6 +6,8 @@
   import DiscoveryWidget from './DiscoveryWidget.svelte';
   import ProfileInfoSection from './ProfileInfoSection.svelte';
 
+  export let base_url;
+
   function decode_i18n(d) {
     if (typeof d == "string")
       return d;

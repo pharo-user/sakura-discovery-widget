@@ -7,6 +7,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const networkId = urlParams.get('id');
 
+    export let base_url;
+
     onMount(readAll);
   
     function decode_i18n(d) {

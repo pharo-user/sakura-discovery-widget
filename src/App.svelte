@@ -8,6 +8,9 @@
   console.log("mode", mode);
   const id = urlParams.has('id') ? urlParams.get('id') : "3c9988cd1b790d009ea1ecd30fbeedc5";
  
+  import env from './components/env.js';
+
+	let sakura_url = env.flag_test ? env.sakura_test_url : env.sakura_prod_url;
 </script>
 
 <style>
@@ -23,13 +26,13 @@
 <section>
   <div>
     {#if mode == 1}
-      <MemberCard></MemberCard>
+      <MemberCard base_url= {sakura_url}></MemberCard>
     {/if}
     {#if mode == 2}
-      <NetworkCard></NetworkCard>
+      <NetworkCard base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget widget_id={id} widget_title="test"></DiscoveryWidget>
+      <DiscoveryWidget base_url= {sakura_url} widget_id={id} widget_title="test"></DiscoveryWidget>
     {/if}
   </div>
 </section>

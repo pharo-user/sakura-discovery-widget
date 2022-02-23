@@ -7,6 +7,8 @@
 
   export let widget_id;
   export let widget_title;
+  export let base_url;
+
   let num_items = 6;
   let first_item = 0;
   let items = [];
