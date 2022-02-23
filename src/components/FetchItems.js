@@ -18,9 +18,9 @@
   }
 
 
-  export async function fetchById(id) {
+  export async function fetchById(base_url, id) {
 
-    var url = "https://sakura.eco/api/widget/articles/"+id;
+    var url = `${base_url}/api/getarticles?widgetKey=${id}`;
    
     return await fetch(url)
     .then((r) => r.json())

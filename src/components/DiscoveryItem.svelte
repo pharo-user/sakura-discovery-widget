@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
 
   export let id;
+  export let base_url; 
 
   onMount(readAll);
   
@@ -36,7 +37,7 @@
 	let currency;
 
   async function readAll() {
-    const {msg, data} = await fetchById(id);
+    const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
       picture_url = data.photo;
       item_url = data.url;

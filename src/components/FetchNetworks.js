@@ -1,5 +1,5 @@
-export async function fetchById(id) {
-  var url = `https://sakura.eco/api/networkCardData?id=${id}`;
+export async function fetchById(base_url, id) {
+  var url = `${base_url}/api/networkCardData?id=${id}`;
   
   return await fetch(url)
   .then(r => r.json())

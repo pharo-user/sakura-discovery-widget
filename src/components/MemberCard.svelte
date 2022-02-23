@@ -32,7 +32,7 @@
   let widgetKey = null;
 
   async function readAll() {
-    const {msg, data} = await fetchMemberById(id);
+    const {msg, data} = await fetchMemberById(base_url, id);
     if (msg === "found") {
       profileName = decode_i18n(data.name);
       profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "img/member.jpg";
@@ -57,6 +57,6 @@
 <div class="member-card">
   <ProfileInfoSection profileName={profileName} profileImage={profileImage} profileDetail={profileDetail} websiteUrl={websiteUrl}/>
   {#if widgetKey}
-    <DiscoveryWidget widget_id={widgetKey} widget_title=""></DiscoveryWidget>
+    <DiscoveryWidget widget_id={widgetKey} base_url={base_url} widget_title=""></DiscoveryWidget>
   {/if}
 </div>

@@ -1,6 +1,7 @@
-export async function fetchById(id) {
-  var url = `http://localhost:8080/api/getProductData?id=${id}`;
-  
+export async function fetchById(base_url, id) {
+  var url = `${base_url}/api/getProductData?id=${id}`;
+
+  console.log("rrr", id)
   return await fetch(url)
   .then(r => r.json())
   .then(data => {
@@ -8,6 +9,6 @@ export async function fetchById(id) {
     return data;
   })
   .catch((err) => {
-    console.err("Error encountered: ", err);
+    console.error("Error encountered: ", err);
   })
 }

@@ -15,7 +15,7 @@
   let presentItems = [];
 
   async function readAll() {
-    [items, widget_title] = await fetchById(widget_id);
+    [items, widget_title] = await fetchById(base_url, widget_id);
     presentItems = items.slice(first_item, num_items);
   }
   
@@ -138,37 +138,37 @@
   </div>
   <div class="discovery-content">
     <!-- {#each items.slice(first_item, first_item+num_items) as item, i}
-      <DiscoveryItem  {...item}></DiscoveryItem>
+      <DiscoveryItem base_url={base_url} id={item.id}></DiscoveryItem>
     {/each} -->
     <div class="discovery-grid">
       <div class="discovery-grid-item">
         {#if presentItems[0]}
-          <DiscoveryItem {...presentItems[0]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[0].id}></DiscoveryItem>
         {/if}
       </div>
       <div class="discovery-grid-item">
         {#if presentItems[1]}
-          <DiscoveryItem {...presentItems[1]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[1].id}></DiscoveryItem>
         {/if}
       </div>
       <div class="discovery-grid-item">
         {#if presentItems[2]}
-          <DiscoveryItem {...presentItems[2]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[2].id}></DiscoveryItem>
         {/if}
       </div>
       <div class="discovery-grid-item">
         {#if presentItems[3]}
-          <DiscoveryItem {...presentItems[3]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[3].id}></DiscoveryItem>
         {/if}
       </div>
       <div class="discovery-grid-item last-item">
         {#if presentItems[4]}
-          <DiscoveryItem {...presentItems[4]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[4].id}></DiscoveryItem>
         {/if}
       </div>
       <div class="discovery-grid-item last-item">
         {#if presentItems[5]}
-          <DiscoveryItem {...presentItems[5]}></DiscoveryItem>
+          <DiscoveryItem base_url={base_url} id={presentItems[5].id}></DiscoveryItem>
         {/if}
       </div>
     </div>

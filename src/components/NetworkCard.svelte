@@ -32,7 +32,7 @@
     let widgetKey = null;
 
     async function readAll() {
-      const {msg, data} = await fetchById(networkId);
+      const {msg, data} = await fetchById(base_url, networkId);
       if (msg == "found") {
         networkName = (data.name !== undefined) ? decode_i18n(data.name) : "NETWORK NAMEsdoi";
         console.log(networkName);
