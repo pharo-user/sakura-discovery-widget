@@ -16,6 +16,7 @@
 
   async function readAll() {
     [items, widget_title] = await fetchById(base_url, widget_id);
+    
     presentItems = items.slice(first_item, num_items);
   }
   

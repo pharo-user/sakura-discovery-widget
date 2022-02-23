@@ -7,7 +7,8 @@
   import ProfileInfoSection from './ProfileInfoSection.svelte';
 
   export let base_url;
-
+  export let id;
+  
   function decode_i18n(d) {
     if (typeof d == "string")
       return d;
@@ -19,9 +20,6 @@
       return d.en;
     return "";
     }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.has('id') ? urlParams.get('id') : 1;
 
   onMount(readAll);
   

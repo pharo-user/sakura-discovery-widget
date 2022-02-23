@@ -6,8 +6,9 @@
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.has('mode') ? urlParams.get('mode') : 0;
   console.log("mode", mode);
-  const id = urlParams.has('id') ? urlParams.get('id') : "3c9988cd1b790d009ea1ecd30fbeedc5";
- 
+  const id = urlParams.has('id') ? urlParams.get('id') : 1;
+  const widetKey = urlParams.has('id') ? urlParams.get('widgetKey') : "3c9988cd1b790d009ea1ecd30fbeedc5";
+
   import env from './components/env.js';
 
 	let sakura_url = env.flag_test ? env.sakura_test_url : env.sakura_prod_url;
@@ -26,13 +27,13 @@
 <section>
   <div>
     {#if mode == 1}
-      <MemberCard base_url= {sakura_url}></MemberCard>
+      <MemberCard id={id} base_url= {sakura_url}></MemberCard>
     {/if}
     {#if mode == 2}
-      <NetworkCard base_url= {sakura_url}></NetworkCard>
+      <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url= {sakura_url} widget_id={id} widget_title="test"></DiscoveryWidget>
+      <DiscoveryWidget base_url= {sakura_url} widget_id={widetKey} widget_title="test"></DiscoveryWidget>
     {/if}
   </div>
 </section>

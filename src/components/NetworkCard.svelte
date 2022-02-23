@@ -4,10 +4,8 @@
     import DiscoveryWidget from './DiscoveryWidget.svelte';
     import ProfileInfoSection from './ProfileInfoSection.svelte';
  
-    const urlParams = new URLSearchParams(window.location.search);
-    const networkId = urlParams.get('id');
-
     export let base_url;
+    export let id;
 
     onMount(readAll);
   
@@ -32,7 +30,7 @@
     let widgetKey = null;
 
     async function readAll() {
-      const {msg, data} = await fetchById(base_url, networkId);
+      const {msg, data} = await fetchById(base_url, id);
       if (msg == "found") {
         networkName = (data.name !== undefined) ? decode_i18n(data.name) : "NETWORK NAMEsdoi";
         console.log(networkName);
@@ -66,7 +64,7 @@
     mailAddress={mailAddress}
   />
    {#if widgetKey}
-    <DiscoveryWidget widget_id={widgetKey + "/" + networkId} widget_title={""}></DiscoveryWidget>
+    <DiscoveryWidget base_url={base_url} widget_id={widgetKey + "/" + id} widget_title={""}></DiscoveryWidget>
    {/if}
 </div>
   

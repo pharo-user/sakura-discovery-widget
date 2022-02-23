@@ -20,8 +20,7 @@
 
   export async function fetchById(base_url, id) {
 
-    var url = `${base_url}/api/getarticles?widgetKey=${id}`;
-   
+    var url = `${base_url}/api/widget/articles/${id}`;
     return await fetch(url)
     .then((r) => r.json())
       .then((d) => {
