@@ -137,40 +137,12 @@
     </a>
   </div>
   <div class="discovery-content">
-    <!-- {#each items.slice(first_item, first_item+num_items) as item, i}
-      <DiscoveryItem base_url={base_url} id={item.id}></DiscoveryItem>
-    {/each} -->
     <div class="discovery-grid">
-      <div class="discovery-grid-item">
-        {#if presentItems[0]}
-          <DiscoveryItem base_url={base_url} id={presentItems[0].id}></DiscoveryItem>
-        {/if}
-      </div>
-      <div class="discovery-grid-item">
-        {#if presentItems[1]}
-          <DiscoveryItem base_url={base_url} id={presentItems[1].id}></DiscoveryItem>
-        {/if}
-      </div>
-      <div class="discovery-grid-item">
-        {#if presentItems[2]}
-          <DiscoveryItem base_url={base_url} id={presentItems[2].id}></DiscoveryItem>
-        {/if}
-      </div>
-      <div class="discovery-grid-item">
-        {#if presentItems[3]}
-          <DiscoveryItem base_url={base_url} id={presentItems[3].id}></DiscoveryItem>
-        {/if}
-      </div>
-      <div class="discovery-grid-item last-item">
-        {#if presentItems[4]}
-          <DiscoveryItem base_url={base_url} id={presentItems[4].id}></DiscoveryItem>
-        {/if}
-      </div>
-      <div class="discovery-grid-item last-item">
-        {#if presentItems[5]}
-          <DiscoveryItem base_url={base_url} id={presentItems[5].id}></DiscoveryItem>
-        {/if}
-      </div>
+        {#each items.slice(first_item, first_item+num_items) as item, i}
+          <div class="discovery-grid-item">
+            <DiscoveryItem base_url={base_url} id={item.id}></DiscoveryItem>
+          </div>
+        {/each}
     </div>
   </div>
   <div class="arrow-right">
