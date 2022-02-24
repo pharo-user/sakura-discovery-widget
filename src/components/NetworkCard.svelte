@@ -28,6 +28,7 @@
     let payingRate = 0; 
     let mailAddress = "helloworld@hello.com";
     let widgetKey = null;
+    let membersRates = [{name: "Alfreds Futterkiskte", rate: 234}, {name: "Centro comercial Moctezuma", rate: 80}];
 
     async function readAll() {
       const {msg, data} = await fetchById(base_url, id);
@@ -39,6 +40,7 @@
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
         widgetKey = data.widgetKey;
+        membersRates = (data.shops !== undefined && data.shops !== null) ? data.shops : membersRates;
       }
     }
     
@@ -62,6 +64,7 @@
     membersCount={membersCount}
     payingRate={payingRate}
     mailAddress={mailAddress}
+    membersRates={membersRates}
   />
    {#if widgetKey}
     <DiscoveryWidget base_url={base_url} widget_id={widgetKey + "/" + id} widget_title={""}></DiscoveryWidget>

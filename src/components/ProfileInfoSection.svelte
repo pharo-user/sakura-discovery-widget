@@ -6,6 +6,7 @@ export let websiteUrl;
 export let membersCount;
 export let payingRate;
 export let mailAddress;
+export let membersRates;
 </script>
 
 <style>
@@ -27,6 +28,37 @@ export let mailAddress;
     padding-top: 15px;
     padding-left: 30px;
     line-height: 32px;
+  }
+  .members-rates-data {
+    padding-top: 15px;
+  } 
+  .members-rates-data-rows {
+    height: 125px;
+    overflow-y: scroll;
+  } 
+ 
+  td, th {
+    width: 140px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    font-size: 10px;
+    height: 2.2em; 
+    white-space: nowrap;
+    display:inline-block;
+
+  }
+  @media (min-width: 900px) {
+    .members-rates-data {
+      margin-left: auto;
+      margin-right: 100px;
+    }
+  }
+  @media (max-width: 900px) {
+    .members-rates-data {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 100px;
+    }
   }
   .site-link {
     text-decoration: none;
@@ -86,5 +118,24 @@ export let mailAddress;
          <a href={"mailto:"+mailAddress} class="mail"><i class="fa fa-envelope" aria-hidden="true"></i></a>
        {/if}
      </div>
+       {#if membersRates}
+        <div class="members-rates-data">
+          <table>
+            <tr>
+              <th>Shop</th>
+              <th>Rate</th>
+            </tr>
+            <div class="members-rates-data-rows">
+            {#each membersRates as item, i}
+              <tr>
+                <td>{item.name}</td>
+                <td>{item.rate}%</td>
+              </tr>
+            {/each}
+            </div>
+          </table> 
+        </div>
+       {/if}
+    
    </div>
 </div>
