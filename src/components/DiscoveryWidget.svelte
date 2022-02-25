@@ -142,7 +142,7 @@
     <div class="discovery-grid">
         {#each items.slice(first_item, first_item+num_items) as item, i}
           <div class="discovery-grid-item">
-            <DiscoveryItem base_url={base_url} id={item.id}></DiscoveryItem>
+            <DiscoveryItem base_url={base_url} id={item}></DiscoveryItem>
           </div>
         {/each}
     </div>

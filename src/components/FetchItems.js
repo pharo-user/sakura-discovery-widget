@@ -27,12 +27,12 @@
         console.log("items in json: ", d)
         var items = [];
         var e,art;
-        for (e in d.articles) {
-          art = d.articles[e];
+        for (e in d.data) {
+          art = d.data[e];
           //console.log(art);
-          items.push( {
-            "id" : art.id,
-          })
+          items.push( 
+            art
+          )
         };
         console.log(items);
         return [items,decode_i18n(d.name)];
