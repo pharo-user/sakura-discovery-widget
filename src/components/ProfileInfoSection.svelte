@@ -17,7 +17,7 @@ function decode_i18n(d) {
     return d[0];
   if (typeof d == "object")
     return d.en;
-  return "";
+  return d;
 }
 </script>
 
@@ -143,7 +143,7 @@ function decode_i18n(d) {
             {#each membersRates as item, i}
               <tr>
                 <td>{decode_i18n(item[0])}</td>
-                <td>{item[1]}%</td>
+                <td>{(item[1] == null) ? "" : (item[1] + "%")}</td>
               </tr>
             {/each}
             </div>
