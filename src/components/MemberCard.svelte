@@ -19,7 +19,7 @@
     if (typeof d == "object")
       return d.en;
     return "";
-    }
+  }
 
   onMount(readAll);
   

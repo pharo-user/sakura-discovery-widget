@@ -28,7 +28,7 @@
     let payingRate = 0; 
     let mailAddress = "helloworld@hello.com";
     let widgetKey = null;
-    let membersRates = [{name: "Alfreds Futterkiskte", rate: 234}, {name: "Centro comercial Moctezuma", rate: 80}];
+    let membersRates = [["Alfreds Futterkiskte", 234], ["Centro comercial Moctezuma", 80]];
 
     async function readAll() {
       const {msg, data} = await fetchById(base_url, id);

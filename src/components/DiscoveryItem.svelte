@@ -39,7 +39,7 @@
   async function readAll() {
     const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
-      picture_url = data.photo;
+      picture_url = (data.photo !== undefined && data.photo !== null) ? "https://www.sakura.eco/media/" + data.photo : null;
       item_url = data.url;
       item_title = decode_i18n(data.title_i18n);
       price = data.price;

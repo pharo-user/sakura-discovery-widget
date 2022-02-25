@@ -7,6 +7,18 @@ export let membersCount;
 export let payingRate;
 export let mailAddress;
 export let membersRates;
+
+function decode_i18n(d) {
+  if (typeof d == "string")
+    return d;
+  if (d == [])
+    return "";
+  if (Array.isArray(d) && d.length > 0)
+    return d[0];
+  if (typeof d == "object")
+    return d.en;
+  return "";
+}
 </script>
 
 <style>
@@ -31,12 +43,12 @@ export let membersRates;
   }
   .members-rates-data {
     padding-top: 15px;
+    padding-left: 20px;
   } 
   .members-rates-data-rows {
     height: 125px;
     overflow-y: scroll;
-  } 
- 
+  }
   td, th {
     width: 140px;
     text-overflow: ellipsis;
@@ -45,7 +57,9 @@ export let membersRates;
     height: 2.2em; 
     white-space: nowrap;
     display:inline-block;
-
+  }
+  table {
+    width: 300px;
   }
   @media (min-width: 900px) {
     .members-rates-data {
@@ -128,14 +142,13 @@ export let membersRates;
             <div class="members-rates-data-rows">
             {#each membersRates as item, i}
               <tr>
-                <td>{item.name}</td>
-                <td>{item.rate}%</td>
+                <td>{decode_i18n(item[0])}</td>
+                <td>{item[1]}%</td>
               </tr>
             {/each}
             </div>
           </table> 
         </div>
        {/if}
-    
    </div>
 </div>
