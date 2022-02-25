@@ -33,7 +33,7 @@
       <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url= {sakura_url} widget_id={widetKey} widget_title="test"></DiscoveryWidget>
+      <DiscoveryWidget base_url= {sakura_url} mode={2} widget_id={widetKey} widget_title="test"></DiscoveryWidget>
     {/if}
   </div>
 </section>

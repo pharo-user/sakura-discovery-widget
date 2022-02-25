@@ -8,6 +8,7 @@
   export let widget_id;
   export let widget_title;
   export let base_url;
+  export let mode;
 
   let num_items = 6;
   let first_item = 0;
@@ -15,7 +16,7 @@
   let presentItems = [];
 
   async function readAll() {
-    [items, widget_title] = await fetchById(base_url, widget_id);
+    [items, widget_title] = await fetchById(base_url, mode, widget_id);
     
     presentItems = items.slice(first_item, num_items);
   }

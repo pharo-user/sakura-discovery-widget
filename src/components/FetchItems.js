@@ -18,9 +18,9 @@
   }
 
 
-  export async function fetchById(base_url, id) {
+  export async function fetchById(base_url, mode, id) {
 
-    var url = `${base_url}/api/widget/articles/${id}`;
+    var url = `${base_url}/api/articleData?mode=${mode}&id=${id}`;
     return await fetch(url)
     .then((r) => r.json())
       .then((d) => {

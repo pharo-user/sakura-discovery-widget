@@ -55,6 +55,6 @@
 <div class="member-card">
   <ProfileInfoSection profileName={profileName} profileImage={profileImage} profileDetail={profileDetail} websiteUrl={websiteUrl}/>
   {#if widgetKey}
-    <DiscoveryWidget widget_id={widgetKey} base_url={base_url} widget_title=""></DiscoveryWidget>
+    <DiscoveryWidget widget_id={widgetKey} mode={1} base_url={base_url} widget_title=""></DiscoveryWidget>
   {/if}
 </div>
