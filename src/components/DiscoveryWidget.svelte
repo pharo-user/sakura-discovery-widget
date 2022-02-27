@@ -108,10 +108,10 @@
   }
   @media (max-width: 550px) {
     .arrow-left {
-      margin-top: 40px;
+      margin-top: 20px;
     }
     .arrow-right {
-      margin-top: 40px;
+      margin-top: 20px;
     }
   }
 

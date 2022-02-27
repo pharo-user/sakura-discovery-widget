@@ -65,9 +65,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 180px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 140px;
   }
   .the-item {
     font-size: 13px;
@@ -89,7 +87,7 @@
     line-height: normal;
   }
   .the-picture {
-    width: 180px;
+    width: 140px;
     height: 200px;
     background-color: white;
   }
@@ -100,7 +98,6 @@
   }
 
   .the-picture {
-    background-color: #d8d8d8;
     margin-bottom: 25px;
   } 
   .the-name {
@@ -136,6 +133,9 @@
     .the-name, .the-brand, .the-price {
       width: 130px;
     }
+    .the-item {
+      margin-left: 22px;
+    }
   }
 
   @media (max-width: 550px) {
@@ -147,8 +147,8 @@
       font-size: 9px;
     }
     .the-picture {
-      width: 80px;
-      height: 110px;
+      width: 60px;
+      height: 80px;
       background-color: white;
     }
     .the-name, .the-brand, .the-price {
