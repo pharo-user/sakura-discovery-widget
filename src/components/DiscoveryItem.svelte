@@ -8,6 +8,11 @@
 
   onMount(readAll);
   
+  $: {
+    if (id)
+      readAll() 
+  }
+
   function decode_i18n(d) {
   if (typeof d == "string")
     return d;
