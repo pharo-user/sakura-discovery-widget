@@ -55,7 +55,7 @@
 </script>
 
 <style>
-  /* a {
+  a {
     color: #000;
   }
   .the-name {
@@ -88,8 +88,9 @@
   .the-picture {
     width: 208px;
     height: 264px;
-    background-color: #d8d8d8;item_url
-  .item-anchor {
+    background-color: #d8d8d8;
+  }
+  item_url, .item-anchor {
     text-decoration: none;
     text-align: center;
     color: inherit;
