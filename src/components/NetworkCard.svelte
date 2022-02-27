@@ -48,7 +48,6 @@
   
 <style>
   .network-card {
-    padding-bottom: 100px;
   }
   .the-name {
   }

@@ -10,7 +10,7 @@
   export let base_url;
   export let mode;
 
-  let num_items = 6;
+  let num_items = window.innerWidth > 900 ? 6 : 4;
   let first_item = 0;
   let items = [];
   let presentItems = [];
@@ -71,7 +71,6 @@
     align-items: flex-end;
   }
 
-
   .discovery-container {
     display: grid;
     grid-template-columns: 5vw auto 5vw;
@@ -82,20 +81,52 @@
     display: flex;
   }
 
+  @media (min-width: 1100px) {
+    .arrow-left {
+      margin-top: 100px;  
+    }
+    .arrow-right {
+      margin-top: 100px;
+    }
+  }
+  @media (max-width: 1100px) {
+    .arrow-left {
+      margin-top: 90px;  
+    }
+    .arrow-right {
+      margin-top: 90px;
+    }
+  }
+  @media (max-width: 900px) {
+    .arrow-left {
+      margin-top: 70px;  
+    }
+    .arrow-right {
+      margin-top: 70px;
+
+    }
+  }
+  @media (max-width: 550px) {
+    .arrow-left {
+      margin-top: 40px;
+    }
+    .arrow-right {
+      margin-top: 40px;
+    }
+  }
+
   .arrow-left {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    position: absolute;
+     position: absolute;
   }
 
   .arrow-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    right: 0;
+     right: 0;
     position: absolute;
   }
 

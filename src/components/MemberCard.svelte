@@ -44,7 +44,6 @@
 
 <style>
   .member-card {
-    padding-bottom: 100px;
   }
   .the-name {
   }
