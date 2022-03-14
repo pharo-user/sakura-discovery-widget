@@ -139,7 +139,6 @@
   .discovery-grid-item{
     width: 15vw;
   }
-
   @media only screen and (max-width: 900px) {
     .discovery-grid-item{
       width: 22vw;
@@ -173,7 +172,7 @@
     <div class="discovery-grid">
         {#each items.slice(first_item, first_item+num_items) as item, i}
           <div class="discovery-grid-item">
-            <DiscoveryItem base_url={base_url} id={item}></DiscoveryItem>
+            <DiscoveryItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoveryItem>
           </div>
         {/each}
     </div>

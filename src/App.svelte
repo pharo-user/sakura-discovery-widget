@@ -7,7 +7,7 @@
   const mode = urlParams.has('mode') ? urlParams.get('mode') : 0;
   console.log("mode", mode);
   const id = urlParams.has('id') ? urlParams.get('id') : 1;
-  const widetKey = urlParams.has('id') ? urlParams.get('widgetKey') : "3c9988cd1b790d009ea1ecd30fbeedc5";
+  const widetKey = urlParams.has('widgetKey') ? urlParams.get('widgetKey') : "3c9988cd1b790d009ea1ecd30fbeedc5";
 
   import env from './components/env.js';
 
@@ -33,7 +33,7 @@
       <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url= {sakura_url} mode={2} widget_id={widetKey} widget_title="test"></DiscoveryWidget>
+      <DiscoveryWidget base_url= {sakura_url} mode={1} widget_id={id} widget_title="test"></DiscoveryWidget>
     {/if}
   </div>
 </section>

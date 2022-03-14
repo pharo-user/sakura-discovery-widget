@@ -2,15 +2,23 @@
   import ImageLoader from './Image/ImageLoader.svelte';
   import { fetchById } from './FetchProduct';
   import { onMount } from "svelte";
+  import { logEvent } from './LogEvent'
 
   export let id;
   export let base_url; 
+  export let mode;
+  export let companyNetworkId;
 
   onMount(readAll);
   
   $: {
     if (id)
       readAll() 
+  }
+
+  $: {
+    if (item_title)
+      logEvent("view", base_url, mode, id, companyNetworkId);
   }
 
   function decode_i18n(d) {
@@ -41,6 +49,10 @@
 	let price;
 	let currency;
 
+  async function productClick (id) {
+      await logEvent("click", base_url, mode, id, companyNetworkId);
+  }
+  
   async function readAll() {
     const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
@@ -163,7 +175,7 @@
 </style>
 
 {#if item_title}
-<div class="the-item">
+<div class="the-item" on:click={(e) => productClick(id)}>
   <a target="_blank" href={item_url} title={item_title} class="item-anchor">
     <div class="the-picture">
       <ImageLoader src={picture_url} alt={name}></ImageLoader>
