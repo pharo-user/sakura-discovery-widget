@@ -1,8 +1,9 @@
 <script>
   import DiscoveryWidget from './components/DiscoveryWidget.svelte';
+  import SwiperWidget from './components/SwiperWidget.svelte';
   import MemberCard from './components/MemberCard.svelte';
   import NetworkCard from './components/NetworkCard.svelte';
-
+  
   const urlParams = new URLSearchParams(window.location.search);
   const mode = urlParams.has('mode') ? urlParams.get('mode') : 0;
   console.log("mode", mode);
@@ -15,6 +16,9 @@
 </script>
 
 <style>
+div {
+  height: 100%;
+}
 .container {
   margin: 0px 0px;
 }
@@ -33,7 +37,10 @@
       <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url= {sakura_url} mode={1} widget_id={id} widget_title="test"></DiscoveryWidget>
+      <DiscoveryWidget base_url={sakura_url} mode={1} widget_id={id} widget_title="test"></DiscoveryWidget>
+    {/if}
+    {#if mode == 4}
+      <SwiperWidget base_url={sakura_url} mode={1} widget_id={id} widget_title="test"></SwiperWidget>
     {/if}
   </div>
 </section>
