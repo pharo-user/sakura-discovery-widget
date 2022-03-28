@@ -24,7 +24,7 @@
   onMount(readAll);
   
   let profileName = "Member Card";
-  let profileImage = "img/member.jpg";
+  let profileImage = "assets/member.jpg";
   let profileDetail = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, sem in condimentum scelerisque, mauris massa vehicula diam,";
   let websiteUrl = "member.com";
   let widgetKey = null;
@@ -33,7 +33,7 @@
     const {msg, data} = await fetchMemberById(base_url, id);
     if (msg === "found") {
       profileName = decode_i18n(data.name);
-      profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "img/member.jpg";
+      profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "assets/member.jpg";
       profileDetail = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description): "";
       websiteUrl = (data.url !== undefined && data.url !== null) ? data.url: "";
       widgetKey = data.widgetKey;

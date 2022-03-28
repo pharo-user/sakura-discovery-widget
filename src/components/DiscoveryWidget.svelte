@@ -165,7 +165,7 @@
 <div class="discovery-container">
   <div class="arrow-left">
     <a href="#/" class="left-arrow-link" on:click={leftClick}>
-      <img alt="left arrow" src="/img/press-left.svg" class="">
+      <img alt="left arrow" src="assets/press-left.svg" class="">
     </a>
   </div>
   <div class="discovery-content">
@@ -179,7 +179,7 @@
   </div>
   <div class="arrow-right">
     <a href="#/" class="right-arrow-link" on:click={rightClick}>
-      <img alt="" src="/img/press-right.svg" class="">
+      <img alt="" src="assets/press-right.svg" class="">
     </a> 
   </div>
 </div>

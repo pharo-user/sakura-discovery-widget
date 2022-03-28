@@ -6,7 +6,7 @@
 
     npm run build
 
-    tar cvzf $NF public/*
+    tar cvzf $NF dist/*
     scp $NF $HOST:
     ssh $HOST "rm -r $APP_PATH"
     ssh $HOST "mkdir $APP_PATH"
