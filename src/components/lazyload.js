@@ -1,6 +1,7 @@
 // lazyLoad.js
 
-function lazyLoad(node, src) {
+function lazyLoad(node) {
+
   if (IntersectionObserver) {
     const observer = new IntersectionObserver(onIntersect, {
       // If the image gets within 50px in the Y axis, start the download.
@@ -11,7 +12,7 @@ function lazyLoad(node, src) {
     function onIntersect(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          node.setAttribute('src', src);
+          node.dispatchEvent(new CustomEvent("viewed"))
         }
       });
     }

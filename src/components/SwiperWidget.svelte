@@ -7,6 +7,7 @@
   import { FreeMode, Pagination } from "swiper";
   import { fetchById } from './FetchItems';
   import { onMount } from "svelte";
+  import DiscoverySwiperItem from "./DiscoverySwiperItem.svelte";
 
   onMount(readAll);
 
@@ -34,9 +35,9 @@
     class="mySwiper"
   >
    {#each items as item, i}
-         <SwiperSlide>
-            {item}
-         </SwiperSlide>
+      <SwiperSlide>
+        <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoverySwiperItem>
+      </SwiperSlide>
    {/each}
   </Swiper>
 </section>
