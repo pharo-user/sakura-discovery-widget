@@ -11,8 +11,16 @@ body {
 }
 
 .swiper {
-  width: 98%;
-  height: 90%;
+  width: 100%;
+  height: 90%; 
+}
+
+.swiper-wrapper {
+  width: 90% !important;
+}
+.swiper-button-next, .swiper-button-prev {
+  margin-top: -40px !important;
+  color: #777 !important;
 }
 
 .swiper-slide {
@@ -46,11 +54,17 @@ body {
     width: 98%;
     height: 100%;
   }  
+  .swiper-button-next, .swiper-button-prev {
+    margin-top: -50px !important;
+  }
 }
 
 @media (max-width: 600px) {
   .swiper-slide {
     height: 210px;
   }
+  .swiper-button-next, .swiper-button-prev {
+    display: none !important;
+  }  
   #app { height: 230px }
 }

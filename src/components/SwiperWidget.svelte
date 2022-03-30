@@ -3,8 +3,9 @@
   import "swiper/css";
   import "swiper/css/free-mode";
   import "swiper/css/pagination";
+  import "swiper/css/navigation";
   import "./swiperstyle.css";
-  import { FreeMode, Pagination } from "swiper";
+  import { Navigation, Keyboard, FreeMode, Pagination } from "swiper";
   import { fetchById } from './FetchItems';
   import { onMount } from "svelte";
   import DiscoverySwiperItem from "./DiscoverySwiperItem.svelte";
@@ -91,10 +92,14 @@
 </div>
 <section>
   <Swiper
-    slidesPerView={5.7}
+    slidesPerView={6.6}
     spaceBetween={10}
+    keyboard={{
+      enabled: true,
+    }}
     freeMode={true}
-    modules={[FreeMode, Pagination]}
+    navigation={true}
+    modules={[Navigation, Keyboard, FreeMode, Pagination]}
     class="mySwiper"
   >
    {#each items as item, i}
