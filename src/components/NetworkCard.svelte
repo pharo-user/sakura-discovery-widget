@@ -22,7 +22,7 @@
     }
 
     let networkName = "NETWORK NAME";
-    let networkLogo = "assets/network.png";
+    let networkLogo = "network.png";
     let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
     let membersCount = 15;
     let payingRate = 0; 
@@ -35,7 +35,7 @@
       if (msg == "found") {
         networkName = (data.name !== undefined) ? decode_i18n(data.name) : "NETWORK NAMEsdoi";
         console.log(networkName);
-        networkLogo = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "assets/network.png";
+        networkLogo = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "network.png";
         description = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description) : "";
         membersCount = data.members;
         mailAddress = (data.email !== undefined && data.email !== null) ? data.email: "";
@@ -66,7 +66,7 @@
     membersRates={membersRates}
   />
    {#if widgetKey}
-    <DiscoveryWidget base_url={base_url} mode={2} widget_id={id} widget_title={""}></DiscoveryWidget>
+    <DiscoveryWidget base_url={base_url} mode={2} widget_id={id} widget_title={""} use_swiper_widget={true}></DiscoveryWidget>
    {/if}
 </div>
   

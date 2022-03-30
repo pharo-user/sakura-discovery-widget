@@ -24,7 +24,7 @@
   onMount(readAll);
   
   let profileName = "Member Card";
-  let profileImage = "assets/member.jpg";
+  let profileImage = "member.jpg";
   let profileDetail = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, sem in condimentum scelerisque, mauris massa vehicula diam,";
   let websiteUrl = "member.com";
   let widgetKey = null;
@@ -33,7 +33,7 @@
     const {msg, data} = await fetchMemberById(base_url, id);
     if (msg === "found") {
       profileName = decode_i18n(data.name);
-      profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "assets/member.jpg";
+      profileImage = (data.logo !== undefined && data.logo !== null) ? "https://www.sakura.eco/media/" + data.logo : "member.jpg";
       profileDetail = (data.description !== undefined && data.description !== null) ? decode_i18n(data.description): "";
       websiteUrl = (data.url !== undefined && data.url !== null) ? data.url: "";
       widgetKey = data.widgetKey;
@@ -54,6 +54,6 @@
 <div class="member-card">
   <ProfileInfoSection profileName={profileName} profileImage={profileImage} profileDetail={profileDetail} websiteUrl={websiteUrl}/>
   {#if widgetKey}
-    <DiscoveryWidget widget_id={id} mode={1} base_url={base_url} widget_title=""></DiscoveryWidget>
+    <DiscoveryWidget widget_id={id} mode={1} base_url={base_url} widget_title="" use_swiper_widget={true}></DiscoveryWidget>
   {/if}
 </div>

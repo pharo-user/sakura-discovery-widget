@@ -23,7 +23,7 @@
   }
 
   let networkName = "NETWORK NAME";
-  let networkLogo = "assets/network.png";
+  let networkLogo = "network.png";
   let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
   let membersCount = 15;
   let payingRate = 0; 
