@@ -23,14 +23,77 @@
   }
 </script>
 
+<style>
+  .top-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-left: 45px;
+  }
+
+  .heading-item2 {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .sakura-link {
+    display: block;
+    flex-shrink: 0;
+    width: 100px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("http://www.sakura.eco/img/logo-2021-1.png");
+    margin-left: 5px;
+    margin-bottom: 4px;
+  }
+  .networked-by {
+    white-space: nowrap;
+    text-transform: none;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  @media (max-width: 900px) {
+    .heading-item2 {
+      font-size: 12px;
+    }
+    .sakura-link {
+      margin-top: 5px;
+      width: 80px;
+      height: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .heading-item2 {
+      font-size:10px;
+    }
+    .sakura-link {
+      margin-top: 5px;
+      width: 60px;
+      height: 8px;
+    }
+  }
+</style>
+
+<div class="top-container">
+  <div class="heading-item1">
+    <span  class="title-itself">
+      <h1 class="title is-4">{""}</h1>
+    </span>
+  </div>
+  <div class="heading-item2">
+    <div class="networked-by">
+      <span>Networked by</span>
+       <a class="sakura-link" href="http://sakura.eco"></a> 
+    </div>
+  </div>
+</div>
 <section>
   <Swiper
-    slidesPerView={3}
-    spaceBetween={30}
+    slidesPerView={5.7}
+    spaceBetween={10}
     freeMode={true}
-    pagination={{
-      clickable: true,
-    }}
     modules={[FreeMode, Pagination]}
     class="mySwiper"
   >

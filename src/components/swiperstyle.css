@@ -1,8 +1,8 @@
-#app { height: 100% }
+#app { height: 300px }
+
 
 section {
   height: 100%;
-  background: #eee;
 }
 
 body {
@@ -11,14 +11,15 @@ body {
 }
 
 .swiper {
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 90%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
+  min-width: 110px !important;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -35,9 +36,21 @@ body {
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (max-width: 900px) {
+  .swiper-slide {
+    height: 220px;
+    min-width: 120px !important;
+  }
+  #app { height: 250px }
+  .swiper {
+    width: 98%;
+    height: 100%;
+  }  
+}
+
+@media (max-width: 600px) {
+  .swiper-slide {
+    height: 210px;
+  }
+  #app { height: 230px }
 }

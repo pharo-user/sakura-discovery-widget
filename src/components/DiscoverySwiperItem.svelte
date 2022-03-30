@@ -62,6 +62,10 @@
 </script>
 
 <style>
+  div {
+    margin-left: auto;
+    margin-right: auto;
+  }
   a {
     color: #000;
   }
@@ -95,8 +99,8 @@
   }
   .the-picture {
     width: 140px;
-    height: 200px;
     background-color: white;
+    margin-bottom: 10px;
   }
   item_url, .item-anchor {
     text-decoration: none;
@@ -104,17 +108,14 @@
     color: inherit;
   }
 
-  .the-picture {
-    margin-bottom: 25px;
-  } 
   .the-name {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 5px;
   }
   .the-price {
-    font-size: 13px;
+    font-size: 11x;
   }
 
   @media (max-width: 900px) {
@@ -124,48 +125,33 @@
      the-brand, .the-price {
       font-size: 10px;
     }
-    .the-picture {
-      width: 150px;
-      height: 200px;
+    .the-picture {      
+      width: 120px;
       background-color: white;
     }
     .the-name, .the-brand, .the-price {
-      width: 180px;
+      width: 120px;
       padding-left: 0px;
       padding-right: 0px;
     }
   }
 
-  @media (max-width: 700px) {
-    .the-name, .the-brand, .the-price {
-      width: 130px;
-    }
-    .the-item {
-      margin-left: 22px;
-    }
-  }
-
-  @media (max-width: 550px) {
+  @media (max-width: 600px) {
     .the-name {
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 11px;
     }
-    the-brand, .the-price {
+     the-brand, .the-price {
       font-size: 9px;
     }
-    .the-picture {
-      width: 60px;
-      height: 80px;
+    .the-picture {      
+      width: 120px;
       background-color: white;
     }
     .the-name, .the-brand, .the-price {
-      width: 60px;
+      width: 120px;
       padding-left: 0px;
       padding-right: 0px;
     }
-  .the-item {
-    width: 60px;
-  }
   }
 </style>
 
