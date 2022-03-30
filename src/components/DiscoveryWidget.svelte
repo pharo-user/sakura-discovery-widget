@@ -1,5 +1,6 @@
 <script>
   import DiscoveryItem from './DiscoveryItem.svelte';
+  import SwiperWidget from './SwiperWidget.svelte';
   import { fetchById } from './FetchItems';
   import { onMount } from "svelte";
 
@@ -9,6 +10,7 @@
   export let widget_title;
   export let base_url;
   export let mode;
+  export let use_swiper_widget;
 
   let num_items = window.innerWidth > 900 ? 6 : 4;
   let first_item = 0;
@@ -149,38 +151,41 @@
   }
 </style>
 
-<div class="top-container">
-  <div class="heading-item1">
-    <span  class="title-itself">
-      <h1 class="title is-4">{""}</h1>
-    </span>
-  </div>
-  <div class="heading-item2">
-    <div class="networked-by">
-      <span>Networked by</span>
-       <a class="sakura-link" href="http://sakura.eco"></a> 
+{#if use_swiper_widget}
+  <SwiperWidget base_url={base_url} mode={mode} widget_id={widget_id} widget_title={widget_title}></SwiperWidget>
+{:else}
+  <div class="top-container">
+    <div class="heading-item1">
+      <span  class="title-itself">
+        <h1 class="title is-4">{""}</h1>
+      </span>
+    </div>
+    <div class="heading-item2">
+      <div class="networked-by">
+        <span>Networked by</span>
+        <a class="sakura-link" href="http://sakura.eco"></a> 
+      </div>
     </div>
   </div>
-</div>
-<div class="discovery-container">
-  <div class="arrow-left">
-    <a href="#/" class="left-arrow-link" on:click={leftClick}>
-      <img alt="left arrow" src="assets/press-left.svg" class="">
-    </a>
-  </div>
-  <div class="discovery-content">
-    <div class="discovery-grid">
-        {#each items.slice(first_item, first_item+num_items) as item, i}
-          <div class="discovery-grid-item">
-            <DiscoveryItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoveryItem>
-          </div>
-        {/each}
+  <div class="discovery-container">
+    <div class="arrow-left">
+      <a href="#/" class="left-arrow-link" on:click={leftClick}>
+        <img alt="left arrow" src="assets/press-left.svg" class="">
+      </a>
+    </div>
+    <div class="discovery-content">
+      <div class="discovery-grid">
+          {#each items.slice(first_item, first_item+num_items) as item, i}
+            <div class="discovery-grid-item">
+              <DiscoveryItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoveryItem>
+            </div>
+          {/each}
+      </div>
+    </div>
+    <div class="arrow-right">
+      <a href="#/" class="right-arrow-link" on:click={rightClick}>
+        <img alt="" src="assets/press-right.svg" class="">
+      </a> 
     </div>
   </div>
-  <div class="arrow-right">
-    <a href="#/" class="right-arrow-link" on:click={rightClick}>
-      <img alt="" src="assets/press-right.svg" class="">
-    </a> 
-  </div>
-</div>
-
+{/if}
