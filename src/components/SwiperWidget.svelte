@@ -78,6 +78,7 @@
   }
 </style>
 
+<div>
 <div class="top-container">
   <div class="heading-item1">
     <span  class="title-itself">
@@ -94,7 +95,6 @@
 <section>
   <Swiper
     slidesPerView={6.6}
-    spaceBetween={10}
     keyboard={{
       enabled: true,
     }}
@@ -109,3 +109,4 @@
    {/each}
   </Swiper>
 </section>
+</div>

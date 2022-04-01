@@ -63,8 +63,6 @@
 
 <style>
   div {
-    margin-left: auto;
-    margin-right: auto;
   }
   a {
     color: #000;
@@ -76,10 +74,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 140px;
+    width: 210px;
   }
   .the-item {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 300;
     font-style: normal;
     letter-spacing: .69px;
@@ -87,20 +85,20 @@
     text-align: center;
     font-family: avenir lt w04_85 heavy1475548;
     overflow: hidden;
-    width: 200px;
+    width: 210px;
   }
   .the-price, .the-brand {
     font-family: montserrat;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 300;
     font-style: normal;
     letter-spacing: .69px;
     line-height: normal;
   }
   .the-picture {
-    width: 140px;
+    width: 210px;
     background-color: white;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   item_url, .item-anchor {
     text-decoration: none;
@@ -111,7 +109,7 @@
   .the-name {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 5px;
   }
   .the-price {
