@@ -37,7 +37,7 @@ div {
       <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url={sakura_url} mode={1} widget_id={id} widget_title="test" use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
+      <DiscoveryWidget base_url={sakura_url} mode={2} widget_id={id} widget_title="test" use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
     {/if}
   </div>
 </section>
