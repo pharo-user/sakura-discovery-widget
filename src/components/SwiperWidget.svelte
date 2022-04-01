@@ -29,6 +29,7 @@
     display: grid;
     grid-template-columns: auto auto;
     padding-left: 45px;
+    margin-bottom: 10px;
   }
 
   .heading-item2 {
@@ -100,8 +101,7 @@
     freeMode={true}
     navigation={true}
     modules={[Navigation, Keyboard, FreeMode, Pagination]}
-    class="mySwiper"
-  >
+   >
    {#each items as item, i}
       <SwiperSlide>
         <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoverySwiperItem>

@@ -1,8 +1,9 @@
-#app { height: 300px }
+#app { height: 250px }
 
 
 section {
   height: 100%;
+  background: #ccc;
 }
 
 body {
@@ -12,7 +13,6 @@ body {
 
 .swiper {
   width: 100%;
-  height: 90%; 
 }
 
 .swiper-wrapper {
@@ -49,7 +49,7 @@ body {
     height: 220px;
     min-width: 120px !important;
   }
-  #app { height: 250px }
+  #app { height: 230px }
   .swiper {
     width: 98%;
     height: 100%;
@@ -66,5 +66,5 @@ body {
   .swiper-button-next, .swiper-button-prev {
     display: none !important;
   }  
-  #app { height: 230px }
+  #app { height: 220px }
 }
