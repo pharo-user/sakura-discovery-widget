@@ -131,9 +131,7 @@
      right: 0;
     position: absolute;
   }
-
-  .discovery-grid {
-    display: flex;
+  presentItems
     padding-right: 5vw;
     padding-left: 4vw;
   } 
