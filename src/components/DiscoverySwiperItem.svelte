@@ -124,11 +124,12 @@
       font-size: 10px;
     }
     .the-picture {      
-      width: 120px;
+      width: 140px;
       background-color: white;
+      margin-bottom: 10px;
     }
     .the-name, .the-brand, .the-price {
-      width: 120px;
+      width: 140px;
       padding-left: 0px;
       padding-right: 0px;
     }
