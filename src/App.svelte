@@ -9,6 +9,7 @@
   console.log("mode", mode);
   const id = urlParams.has('id') ? urlParams.get('id') : 1;
   const widetKey = urlParams.has('widgetKey') ? urlParams.get('widgetKey') : "3c9988cd1b790d009ea1ecd30fbeedc5";
+  const title = urlParams.has('title') ? urlParams.get('title') : "";
 
   import env from './components/env.js';
 
@@ -37,7 +38,7 @@ div {
       <NetworkCard id={id} base_url= {sakura_url}></NetworkCard>
     {/if}
     {#if mode == 3}
-      <DiscoveryWidget base_url={sakura_url} mode={2} widget_id={id} widget_title="test" use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
+      <DiscoveryWidget base_url={sakura_url} mode={2} widget_id={id} widget_title={title} use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
     {/if}
   </div>
 </section>

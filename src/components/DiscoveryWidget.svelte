@@ -18,9 +18,9 @@
   let presentItems = [];
 
   async function readAll() {
-    [items, widget_title] = await fetchById(base_url, mode, widget_id);
+   /* [items, widget_title] = await fetchById(base_url, mode, widget_id);
     
-    presentItems = items.slice(first_item, num_items);
+    presentItems = items.slice(first_item, num_items);*/
   }
   
   function leftClick() {

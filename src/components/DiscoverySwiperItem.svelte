@@ -116,7 +116,7 @@
     font-size: 11x;
   }
 
-  @media (max-width: 900px) {
+  /*media (max-width: 900px) {
     .the-name {
       font-size: 11px;
     }
@@ -133,7 +133,7 @@
       padding-left: 0px;
       padding-right: 0px;
     }
-  }
+  }*/
 
   @media (max-width: 600px) {
     .the-name {

@@ -19,8 +19,10 @@
 
   let items = [];
 
+  let title;
+
   async function readAll() {
-    [items, widget_title] = await fetchById(base_url, mode, widget_id);
+    [items, title] = await fetchById(base_url, mode, widget_id);
   }
 </script>
 
@@ -30,6 +32,13 @@
     grid-template-columns: auto auto;
     padding-left: 45px;
     margin-bottom: 10px;
+  }
+
+  .heading-item1 {
+    font-family: avenir lt w04_85 heavy1475548;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-left: 0px;
   }
 
   .heading-item2 {
@@ -75,15 +84,17 @@
       width: 60px;
       height: 8px;
     }
+    .heading-item1 {
+      font-size: 14px;
+      margin-left: -15px;
+     }
   }
 </style>
 
 <div>
 <div class="top-container">
   <div class="heading-item1">
-    <span  class="title-itself">
-      <h1 class="title is-4">{""}</h1>
-    </span>
+    {widget_title}
   </div>
   <div class="heading-item2">
     <div class="networked-by">
