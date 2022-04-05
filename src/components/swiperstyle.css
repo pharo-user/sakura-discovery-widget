@@ -30,7 +30,7 @@ div {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: transparent;
   width: 210px !important;
 
   /* Center slide text vertically */
