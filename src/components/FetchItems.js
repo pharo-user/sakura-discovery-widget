@@ -6,6 +6,8 @@
   }
   
   function decode_i18n(d) {
+    if (!d)
+      return "";
     if (typeof d == "string")
       return d;
     if (d == [])
