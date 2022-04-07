@@ -66,7 +66,7 @@
     membersRates={membersRates}
   />
    {#if widgetKey}
-    <DiscoveryWidget base_url={base_url} mode={2} widget_id={id} widget_title={""} use_swiper_widget={true}></DiscoveryWidget>
+    <DiscoveryWidget base_url={base_url} mode={2} widget_id={id} widget_title={" "} use_swiper_widget={true}></DiscoveryWidget>
    {/if}
 </div>
   

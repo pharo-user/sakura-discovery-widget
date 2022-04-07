@@ -23,6 +23,8 @@
 
   async function readAll() {
     [items, title] = await fetchById(base_url, mode, widget_id);
+    if (!widget_title)
+      widget_title = title;
   }
 </script>
 

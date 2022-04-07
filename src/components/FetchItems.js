@@ -36,7 +36,7 @@
           )
         };
         console.log(items);
-        return [items,decode_i18n(d.name)];
+        return [items,decode_i18n(d.title)];
       })
   }
 

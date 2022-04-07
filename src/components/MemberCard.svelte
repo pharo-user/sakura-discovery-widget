@@ -54,6 +54,6 @@
 <div class="member-card">
   <ProfileInfoSection profileName={profileName} profileImage={profileImage} profileDetail={profileDetail} websiteUrl={websiteUrl}/>
   {#if widgetKey}
-    <DiscoveryWidget widget_id={id} mode={1} base_url={base_url} widget_title={""} use_swiper_widget={true}></DiscoveryWidget>
+    <DiscoveryWidget widget_id={id} mode={1} base_url={base_url} widget_title={" "} use_swiper_widget={true}></DiscoveryWidget>
   {/if}
 </div>
