@@ -107,7 +107,7 @@
 </div>
 <section>
   <Swiper
-    slidesPerView={6.6}
+    slidesPerView={"auto"}
     keyboard={{
       enabled: true,
     }}

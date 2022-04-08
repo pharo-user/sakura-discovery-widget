@@ -11,7 +11,7 @@ body {
 }
 
 div {
-  max-width: 1530px;
+  max-width: 1340px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -20,10 +20,11 @@ div {
 }
 
 .swiper-wrapper {
-  width: 90% !important;
+  width: 100% !important;
+  margin-left: 10px !important;
 }
 .swiper-button-next, .swiper-button-prev {
-  margin-top: -40px !important;
+  margin-top: -50px !important;
   color: #777 !important;
 }
 
