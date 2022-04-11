@@ -65,7 +65,7 @@ div {
   }
 }*/
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .swiper-slide {
     width: 120px !important;
     margin-right: 5px;

@@ -77,7 +77,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 550px) {
     .heading-item2 {
       font-size:10px;
     }

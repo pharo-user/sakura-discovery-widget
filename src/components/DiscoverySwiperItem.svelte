@@ -135,7 +135,7 @@
     }
   }*/
 
-  @media (max-width: 600px) {
+  @media (max-width: 550px) {
     .the-name {
       font-size: 11px;
     }
