@@ -61,7 +61,7 @@
     height: 15px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("http://www.sakura.eco/img/logo-2021-1.png");
+    background-image: url("https://www.sakura.eco/img/logo-2021-1.png");
     margin-left: 5px;
     margin-bottom: 4px;
   }
