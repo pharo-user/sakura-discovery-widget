@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import { logEvent } from './LogEvent'
   import lazyLoad from "./lazyload";
+  import Marquee from "svelte-fast-marquee";
 
   export let id;
   export let base_url; 
@@ -37,6 +38,10 @@
 	// let brand;
 	let price;
 	let currency;
+  let playMarquee = false;
+  let speedMarquee = window.innerWidth < 550 ? 10 : 20;
+  let nameDiv;
+  let mouseTimeout;
 
   async function productClick (id) {
       await logEvent("click", base_url, mode, id, companyNetworkId);
@@ -52,30 +57,65 @@
       currency = data.currency;
     }
   }
-  
+
+  function checkOverflow(e) {
+      return e.scrollWidth > e.clientWidth
+  }
+
+  function startMarquee() {
+    if (playMarquee)
+      return;
+
+    // wait for nameDiv to appear
+    while (!nameDiv) {setTimeout(function() {console.log("Waiting for nameDiv render")}), 100};
+
+    if (checkOverflow(nameDiv)) {
+      playMarquee = true; 
+      setTimeout(function(){
+        playMarquee = false;
+      }, (nameDiv.clientWidth/speedMarquee)*1000);    
+    }
+  }
+
+  function mouseStartMarquee() {
+    mouseTimeout = setTimeout(function() {
+      startMarquee()
+    }, 500);
+  }
+
+  function mouseStopMarquee() {
+    if (mouseTimeout)
+      clearInterval(mouseTimeout)
+  }
+
   async function viewed() {
     if (!item_title) {
       await readAll()
       logEvent("view", base_url, mode, id, companyNetworkId);
     }
+    setTimeout(function() {
+      startMarquee()
+    }, 500);
   }
 </script>
 
 <style>
-  div {
-  }
   a {
     color: #000;
   }
-  .the-name {
+  div {
     text-transform: uppercase;
+  }
+  .scrolling {
+    width: auto !important;
+    text-overflow: none;
   }
   .the-name, .the-brand, .the-price {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     width: 210px;
-  }
+   }
   .the-item {
     font-size: 18px;
     font-weight: 300;
@@ -115,6 +155,7 @@
   .the-price {
     font-size: 11x;
   }
+  
 
   /*media (max-width: 900px) {
     .the-name {
@@ -154,21 +195,27 @@
   }
 </style>
 
-{#if item_title}
-<div class="the-item">
-  <a target="_blank" href={item_url} title={item_title} class="item-anchor">
-    <div class="the-picture">
-      <ImageLoader src={picture_url} alt={name}></ImageLoader>
-    </div>
-    <div class="the-name" title={item_title}>{item_title}</div>
-    <!-- <div class="the-brand" title={brand}>{brand}</div> -->
-    {#if price}
-      <div class="the-price">{price}&nbsp;{currency}</div>
-    {/if}
-  </a>
+<div class="the-item" use:lazyLoad on:viewed={() => viewed()} on:click={(e) => productClick(id)}
+   on:mouseover={mouseStartMarquee} on:mouseout={mouseStopMarquee} on:focus={function () {}}>
+  {#if item_title}
+    <a target="_blank" href={item_url} title={item_title} class="item-anchor">
+      <div class="the-picture">
+        <ImageLoader src={picture_url} alt={name}></ImageLoader>
+      </div>
+      <Marquee pauseOnHover={!playMarquee} play={playMarquee} speed={speedMarquee}>
+        <div bind:this={nameDiv} class="the-name" class:scrolling={playMarquee} title={item_title}>{item_title}</div>
+        {#if playMarquee}
+        <div style="width:100px"></div>
+        {/if}
+      </Marquee>
+      <!-- <div class="the-brand" title={brand}>{brand}</div> -->
+      {#if price}
+        <div class="the-price">{price}&nbsp;{currency}</div>
+      {/if}
+    </a>
+  {:else}
+  <div>
+  Loading
+  </div>
+  {/if}
 </div>
-{:else}
-<div use:lazyLoad on:viewed = {() => viewed()} on:click={(e) => productClick(id)}>
-Loading
-</div>
-{/if}
