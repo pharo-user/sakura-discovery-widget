@@ -196,7 +196,7 @@
 </style>
 
 <div class="the-item" use:lazyLoad on:viewed={() => viewed()} on:click={(e) => productClick(id)}
-   on:mouseover={mouseStartMarquee} on:mouseout={mouseStopMarquee} on:focus={function () {}}>
+   on:mouseover={mouseStartMarquee} on:mouseout={mouseStopMarquee} on:blur={function () {}} on:focus={function () {}}>
   {#if item_title}
     <a target="_blank" href={item_url} title={item_title} class="item-anchor">
       <div class="the-picture">

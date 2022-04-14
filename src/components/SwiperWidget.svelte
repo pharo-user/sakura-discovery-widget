@@ -5,10 +5,11 @@
   import "swiper/css/pagination";
   import "swiper/css/navigation";
   import "./swiperstyle.css";
-  import { Navigation, Keyboard, FreeMode, Pagination } from "swiper";
+  import { Navigation, Keyboard, FreeMode, Pagination, Autoplay } from "swiper";
   import { fetchById } from './FetchItems';
   import { onMount } from "svelte";
   import DiscoverySwiperItem from "./DiscoverySwiperItem.svelte";
+  import lazyLoad from "./lazyload";
 
   onMount(readAll);
 
@@ -18,14 +19,29 @@
   export let mode;
 
   let items = [];
-
   let title;
+  let swiper;
 
   async function readAll() {
+    if (swiper)
+      swiper.swiper().autoplay.stop();
+
     [items, title] = await fetchById(base_url, mode, widget_id);
     if (!widget_title)
       widget_title = title;
   }
+
+  function viewed() {
+    if (swiper) {
+      swiper.swiper().autoplay.stop();
+      swiper.swiper().slideTo(0);
+    }
+
+    setTimeout(function() {
+      swiper.swiper().autoplay.start();
+    }, 10000);
+  }
+ 
 </script>
 
 <style>
@@ -59,12 +75,14 @@
     margin-left: 5px;
     margin-bottom: 4px;
   }
+  
   .networked-by {
     white-space: nowrap;
     text-transform: none;
     display: flex;
     align-items: flex-end;
   }
+
 
   @media (max-width: 900px) {
     .heading-item2 {
@@ -93,7 +111,7 @@
   }
 </style>
 
-<div>
+<div use:lazyLoad on:viewed={() => viewed()}>
 <div class="top-container">
   <div class="heading-item1">
     {widget_title}
@@ -107,13 +125,19 @@
 </div>
 <section>
   <Swiper
+    bind:this={swiper}
     slidesPerView={"auto"}
     keyboard={{
       enabled: true,
     }}
+    autoplay={{
+     delay: 2000,
+     disableOnInteraction: true,
+     pauseOnMouseEnter: true
+    }}
     freeMode={true}
     navigation={true}
-    modules={[Navigation, Keyboard, FreeMode, Pagination]}
+    modules={[Autoplay, Navigation, Keyboard, FreeMode, Pagination]}
    >
    {#each items as item, i}
       <SwiperSlide>
