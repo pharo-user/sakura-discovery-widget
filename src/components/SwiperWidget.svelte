@@ -29,6 +29,8 @@
     [items, title] = await fetchById(base_url, mode, widget_id);
     if (!widget_title)
       widget_title = title;
+
+    logEvent("page", base_url, mode, 0, widget_id);
   }
 
   function viewed() {
@@ -119,7 +121,7 @@
   <div class="heading-item2">
     <div class="networked-by">
       <span>Networked by</span>
-       <a class="sakura-link" href="http://sakura.eco"></a> 
+       <a class="sakura-link" href="https://sakura.eco"></a> 
     </div>
   </div>
 </div>
