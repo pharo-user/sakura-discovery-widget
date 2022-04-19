@@ -63,6 +63,8 @@
   }
 
   function startMarquee() {
+
+    return;   // at the moment this feature is disabled
     if (playMarquee)
       return;
 
