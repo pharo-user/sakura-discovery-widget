@@ -10,6 +10,7 @@
   import { onMount } from "svelte";
   import DiscoverySwiperItem from "./DiscoverySwiperItem.svelte";
   import lazyLoad from "./lazyload";
+  import { logEvent } from './LogEvent'
 
   onMount(readAll);
 
@@ -27,6 +28,7 @@
       swiper.swiper().autoplay.stop();
 
     [items, title] = await fetchById(base_url, mode, widget_id);
+
     if (!widget_title)
       widget_title = title;
 
