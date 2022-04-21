@@ -22,6 +22,8 @@
   let items = [];
   let title;
   let swiper;
+  let widgetShown = false;
+  let slideAutoChanged = true;
 
   async function readAll() {
     if (swiper)
@@ -44,6 +46,18 @@
     setTimeout(function() {
       swiper.swiper().autoplay.start();
     }, 10000);
+
+    if (!widgetShown) {
+      logEvent("show", base_url, mode, 0, widget_id);
+      widgetShown = true;
+    }
+  }
+
+  function slideChangeInteractively() {
+    // when autoscroll, not generate the event
+    if (!slideAutoChanged)
+      logEvent("scroll", base_url, mode, 0, widget_id);
+    slideAutoChanged = false;
   }
  
 </script>
@@ -141,6 +155,8 @@
     }}
     freeMode={true}
     navigation={true}
+    on:autoplay={function() {slideAutoChanged=true}}
+    on:slideChangeTransitionEnd={slideChangeInteractively}
     modules={[Autoplay, Navigation, Keyboard, FreeMode, Pagination]}
    >
    {#each items as item, i}
