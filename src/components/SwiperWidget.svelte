@@ -34,7 +34,7 @@
     if (!widget_title)
       widget_title = title;
 
-    logEvent("page", base_url, mode, null, null);
+    logEvent("page", base_url, mode, null, widget_id);
   }
 
   function viewed() {
@@ -48,17 +48,15 @@
     }, 10000);
 
     if (!widgetShown) {
-      logEvent("show", base_url, mode, null, null);
+      logEvent("show", base_url, mode, null, widget_id);
       widgetShown = true;
     }
   }
 
   function slideChangeInteractively() {
     // when autoscroll, not generate the event
-    if (!slideAutoChanged) {
-      console.log("wqwerasdf323");
-      logEvent("scroll", base_url, mode, null, null);
-    }
+    if (!slideAutoChanged)
+      logEvent("scroll", base_url, mode, null, widget_id);
     slideAutoChanged = false;
   }
  
