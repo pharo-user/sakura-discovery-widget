@@ -23,7 +23,7 @@
   let title;
   let swiper;
   let widgetShown = false;
-  let slideAutoChanged = true;
+  let slideAutoChanged = false;
 
   async function readAll() {
     if (swiper)
@@ -34,7 +34,7 @@
     if (!widget_title)
       widget_title = title;
 
-    logEvent("page", base_url, mode, 0, widget_id);
+    logEvent("page", base_url, mode, null, null);
   }
 
   function viewed() {
@@ -48,15 +48,17 @@
     }, 10000);
 
     if (!widgetShown) {
-      logEvent("show", base_url, mode, 0, widget_id);
+      logEvent("show", base_url, mode, null, null);
       widgetShown = true;
     }
   }
 
   function slideChangeInteractively() {
     // when autoscroll, not generate the event
-    if (!slideAutoChanged)
-      logEvent("scroll", base_url, mode, 0, widget_id);
+    if (!slideAutoChanged) {
+      console.log("wqwerasdf323");
+      logEvent("scroll", base_url, mode, null, null);
+    }
     slideAutoChanged = false;
   }
  
