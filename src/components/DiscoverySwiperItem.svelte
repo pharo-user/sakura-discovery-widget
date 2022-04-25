@@ -50,7 +50,7 @@
   async function readAll() {
     const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
-      picture_url = "https://www.sakura.eco/media/discovery-products/8b5d0fa0-c593-0d00-8739-e38d0de228fe.jpg"; //(data.photo !== undefined && data.photo !== null) ? "https://www.sakura.eco/media/" + data.photo : null;
+      picture_url = (data.photo !== undefined && data.photo !== null) ? "https://www.sakura.eco/media/" + data.photo : null;
       item_url = data.url;
       item_title = decode_i18n(data.title_i18n);
       price = data.price;
