@@ -66,7 +66,7 @@
   .top-container {
     display: grid;
     grid-template-columns: auto auto;
-    padding-left: 45px;
+    padding-left: 10px;
     margin-bottom: 10px;
   }
 
@@ -113,6 +113,9 @@
   }
 
   @media (max-width: 550px) {
+    .top-container {
+      padding-left: 20px;
+    }
     .heading-item2 {
       font-size:10px;
     }
