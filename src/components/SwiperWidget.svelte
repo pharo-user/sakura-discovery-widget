@@ -101,7 +101,6 @@
     align-items: flex-end;
   }
 
-
   @media (max-width: 900px) {
     .heading-item2 {
       font-size: 12px;
@@ -126,6 +125,9 @@
       font-size: 14px;
       margin-left: -15px;
      }
+     .networked-by span { 
+      display: none;
+    }
   }
 </style>
 
