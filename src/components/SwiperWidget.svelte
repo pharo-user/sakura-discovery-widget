@@ -11,6 +11,7 @@
   import DiscoverySwiperItem from "./DiscoverySwiperItem.svelte";
   import lazyLoad from "./lazyload";
   import { logEvent } from './LogEvent'
+  import { fetchParamsByWidgetKey } from './FetchNetworkInfo'
 
   onMount(readAll);
 
@@ -18,12 +19,23 @@
   export let widget_title;
   export let base_url;
   export let mode;
+  export let urlParams;
 
   let items = [];
   let title;
   let swiper;
   let widgetShown = false;
   let slideAutoChanged = false;
+
+  let configOptions = {
+    price: false,
+    brand: false,
+    marquee: false,
+    autoscroll: true,
+    productDetail: false,
+    networkDetail: false,
+    size: 1
+  };
 
   async function readAll() {
     if (swiper)
@@ -34,6 +46,20 @@
     if (!widget_title)
       widget_title = title;
 
+    if (widget_id.length >= 32) {
+      let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
+      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size"]).forEach(
+        function (value) {          
+          if (fetchedParams)
+            if (typeof fetchedParams[value] !== "undefined")
+              configOptions[value] = fetchedParams[value];
+
+          if (urlParams.has(value))  // override network's params by URL params
+            configOptions[value] = urlParams.get(value) == "true";
+        }
+      )
+    }
+  
     logEvent("page", base_url, mode, null, widget_id);
   }
 
@@ -166,7 +192,7 @@
    >
    {#each items as item, i}
       <SwiperSlide>
-        <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id}></DiscoverySwiperItem>
+        <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id} configOptions={configOptions}></DiscoverySwiperItem>
       </SwiperSlide>
    {/each}
   </Swiper>

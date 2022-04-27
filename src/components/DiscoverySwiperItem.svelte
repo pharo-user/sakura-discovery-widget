@@ -10,7 +10,8 @@
   export let base_url; 
   export let mode;
   export let companyNetworkId;
-  
+  export let configOptions;
+
   function decode_i18n(d) {
   if (typeof d == "string")
     return d;
@@ -212,7 +213,7 @@
         {/if}
       </Marquee>
       <!-- <div class="the-brand" title={brand}>{brand}</div> -->
-      {#if price}
+      {#if price && configOptions.price}
         <div class="the-price">{price}&nbsp;{currency}</div>
       {/if}
     </a>
