@@ -108,19 +108,20 @@
 
   .heading-item2 {
     margin-left: auto;
-    margin-right: 0;
+    margin-right: -10px;
+    font-size: 11px;
   }
 
   .sakura-link {
     display: block;
     flex-shrink: 0;
     width: 100px;
-    height: 15px;
+    height: 10px;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("https://www.sakura.eco/img/logo-2021-1.png");
     margin-left: 5px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   
   .networked-by {
