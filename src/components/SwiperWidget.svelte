@@ -28,16 +28,18 @@
   let slideAutoChanged = false;
 
   let configOptions = {
-    price: false,
+    price: true,
     brand: false,
     marquee: false,
     autoscroll: true,
     productDetail: false,
     networkDetail: false,
-    size: 1
+    size: 1,
+    border: 1
   };
 
   async function readAll() {
+
     if (swiper)
       swiper.swiper().autoplay.stop();
 
@@ -48,18 +50,19 @@
 
     if (widget_id.length >= 32) {
       let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
-      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size"]).forEach(
+      
+      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border"]).forEach(
         function (value) {          
           if (fetchedParams)
             if (typeof fetchedParams[value] !== "undefined")
               configOptions[value] = fetchedParams[value];
 
           if (urlParams.has(value))  // override network's params by URL params
-            configOptions[value] = urlParams.get(value) == "true";
+            configOptions[value] = JSON.parse(urlParams.get(value));
         }
       )
     }
-  
+
     logEvent("page", base_url, mode, null, widget_id);
   }
 
@@ -160,6 +163,10 @@
   }
 </style>
 
+{#if configOptions.border==2 || configOptions.border==4}
+  <hr>
+{/if}
+
 <div use:lazyLoad on:viewed={() => viewed()}>
 <div class="top-container">
   <div class="heading-item1">
@@ -198,3 +205,7 @@
   </Swiper>
 </section>
 </div>
+
+{#if configOptions.border==3 || configOptions.border==4}
+  <hr>
+{/if}
