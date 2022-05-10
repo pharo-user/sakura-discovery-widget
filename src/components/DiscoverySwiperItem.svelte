@@ -35,6 +35,7 @@
 	let picture_url;
 	let item_url;
 	let item_title;
+  let item_description; 
 	let name;
 	// let brand;
 	let price;
@@ -54,6 +55,7 @@
       picture_url = (data.photo !== undefined && data.photo !== null) ? "https://www.sakura.eco/media/" + data.photo : null;
       item_url = data.url;
       item_title = decode_i18n(data.title_i18n);
+      item_description = decode_i18n(data.description_i18n);
       price = data.price;
       currency = data.currency;
     }
@@ -119,6 +121,19 @@
     white-space: nowrap;
     width: 210px;
    }
+  .the-description {
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 210px;
+    font-family: montserrat;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+    font-size: 11px;
+  }
   .the-item {
     font-size: 18px;
     font-weight: 300;
@@ -196,13 +211,18 @@
       padding-left: 0px;
       padding-right: 0px;
     }
+    .the-description {
+      width: 120px;
+      padding-left: 0px;
+      padding-right: 0px;
+     }
   }
 </style>
 
 <div class="the-item" use:lazyLoad on:viewed={() => viewed()} on:click={(e) => productClick(id)}
    on:mouseover={mouseStartMarquee} on:mouseout={mouseStopMarquee} on:blur={function () {}} on:focus={function () {}}>
   {#if item_title}
-    <a target="_blank" href={item_url} title={item_title} class="item-anchor">
+    <a target="_blank" href={item_url} title={item_description} class="item-anchor">
       <div class="the-picture">
         <ImageLoader src={picture_url} alt={name}></ImageLoader>
       </div>
@@ -215,6 +235,9 @@
       <!-- <div class="the-brand" title={brand}>{brand}</div> -->
       {#if price && configOptions.price}
         <div class="the-price">{price}&nbsp;{currency}</div>
+      {/if}
+      {#if item_description && configOptions.productDetail}
+        <div title={item_description} class="the-description">{item_description}</div>
       {/if}
     </a>
   {:else}

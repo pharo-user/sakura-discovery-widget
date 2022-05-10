@@ -32,7 +32,7 @@
     brand: false,
     marquee: false,
     autoscroll: true,
-    productDetail: false,
+    productDetail: true,
     networkDetail: false,
     size: 1,
     border: 1
