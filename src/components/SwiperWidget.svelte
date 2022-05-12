@@ -26,6 +26,8 @@
   let swiper;
   let widgetShown = false;
   let slideAutoChanged = false;
+  let topBorder = false;
+  let bottomBorder = false;
 
   let configOptions = {
     price: true,
@@ -35,7 +37,7 @@
     productDetail: true,
     networkDetail: false,
     size: 1,
-    border: 1
+    border: 0
   };
 
   async function readAll() {
@@ -62,6 +64,9 @@
         }
       )
     }
+
+    topBorder = (configOptions.border & 1) != 0;
+    bottomBorder = (configOptions.border & 2) != 0;
 
     logEvent("page", base_url, mode, null, widget_id);
   }
@@ -164,7 +169,7 @@
   }
 </style>
 
-{#if configOptions.border==2 || configOptions.border==4}
+{#if topBorder}
   <hr>
 {/if}
 
@@ -207,6 +212,6 @@
 </section>
 </div>
 
-{#if configOptions.border==3 || configOptions.border==4}
+{#if bottomBorder}
   <hr>
 {/if}
