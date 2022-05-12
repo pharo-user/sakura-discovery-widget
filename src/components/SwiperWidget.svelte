@@ -37,7 +37,9 @@
     productDetail: true,
     networkDetail: false,
     size: 1,
-    border: 0
+    border: 0,
+    networkedlabel: null,
+    networkedlink: "https://sakura.eco"
   };
 
   async function readAll() {
@@ -53,7 +55,7 @@
     if (widget_id.length >= 32) {
       let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
       
-      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border"]).forEach(
+      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border", "networkedlabel", "networkedlink"]).forEach(
         function (value) {          
           if (fetchedParams)
             if (typeof fetchedParams[value] !== "undefined")
@@ -113,20 +115,27 @@
 
   .heading-item2 {
     margin-left: auto;
-    margin-right: -10px;
+    margin-right: 5px;
     font-size: 11px;
   }
 
   .sakura-link {
     display: block;
     flex-shrink: 0;
-    width: 100px;
+    width: 70px;
     height: 10px;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("https://www.sakura.eco/img/logo-2021-1.png");
     margin-left: 5px;
     margin-bottom: 3px;
+  }
+  .sakura-text-link {
+    margin-left: 3px;
+    margin-right: 5px;
+    color: black;
+    font-weight: 500;
+    text-transform: uppercase;
   }
   
   .networked-by {
@@ -181,7 +190,11 @@
   <div class="heading-item2">
     <div class="networked-by">
       <span>Networked by</span>
+      {#if configOptions.networkedlabel}
+        <a class="sakura-text-link" href={configOptions.networkedlink}> {configOptions.networkedlabel} </a>
+      {:else}
        <a class="sakura-link" href="https://sakura.eco"></a> 
+       {/if}
     </div>
   </div>
 </div>
