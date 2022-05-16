@@ -23,18 +23,19 @@
 
   let items = [];
   let title;
-  let swiper;
+    let swiper;
   let widgetShown = false;
   let slideAutoChanged = false;
   let topBorder = false;
   let bottomBorder = false;
+  let widget_description = '';
 
   let configOptions = {
     price: true,
     brand: false,
     marquee: false,
     autoscroll: true,
-    productDetail: true,
+    productDetail: false,
     networkDetail: false,
     size: 1,
     border: 0,
@@ -47,11 +48,11 @@
     if (swiper)
       swiper.swiper().autoplay.stop();
 
-    [items, title] = await fetchById(base_url, mode, widget_id);
+    [items, title, widget_description] = await fetchById(base_url, mode, widget_id);
 
     if (!widget_title)
       widget_title = title;
-
+ 
     if (widget_id.length >= 32) {
       let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
       
@@ -80,7 +81,8 @@
     }
 
     setTimeout(function() {
-      swiper.swiper().autoplay.start();
+      if (configOptions.autoscroll)
+        swiper.swiper().autoplay.start();
     }, 10000);
 
     if (!widgetShown) {
@@ -117,6 +119,19 @@
     margin-left: auto;
     margin-right: 5px;
     font-size: 11px;
+  }
+
+  .heading-item3 {
+    margin-left: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: montserrat;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+    font-size: 13px;
   }
 
   .sakura-link {
@@ -175,6 +190,10 @@
      .networked-by span { 
       display: none;
     }
+
+    .heading-item3 {
+      margin-left: -15px;
+    }
   }
 </style>
 
@@ -197,7 +216,13 @@
        {/if}
     </div>
   </div>
+  {#if configOptions.networkDetail}
+    <div class="heading-item3" title={widget_description}>
+      {widget_description}
+    </div>
+  {/if}
 </div>
+
 <section>
   <Swiper
     bind:this={swiper}

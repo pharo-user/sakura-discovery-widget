@@ -37,7 +37,7 @@
 	let item_title;
   let item_description; 
 	let name;
-	// let brand;
+  let brand;
 	let price;
 	let currency;
   let playMarquee = false;
@@ -58,6 +58,7 @@
       item_description = decode_i18n(data.description_i18n);
       price = data.price;
       currency = data.currency;
+      brand = decode_i18n(data.brand);
     }
   }
 
@@ -66,8 +67,9 @@
   }
 
   function startMarquee() {
-    return;   // at the moment this feature is disabled
-	  
+    if (!configOptions.marquee)
+      return;
+      
     if (playMarquee)
       return;
 
@@ -153,6 +155,9 @@
     letter-spacing: .69px;
     line-height: normal;
   }
+  .the-brand {
+    margin-bottom: 3px;
+  }
   .the-picture {
     width: 210px;
     background-color: white;
@@ -232,7 +237,9 @@
         <div style="width:100px"></div>
         {/if}
       </Marquee>
-      <!-- <div class="the-brand" title={brand}>{brand}</div> -->
+      {#if brand && configOptions.brand}
+      <div class="the-brand" title={brand}>{brand}</div>
+      {/if}
       {#if price && configOptions.price}
         <div class="the-price">{price}&nbsp;{currency}</div>
       {/if}
