@@ -9,7 +9,6 @@
   console.log("mode", mode);
   let id = urlParams.has('id') ? urlParams.get('id') : 1;
   const widetKey = urlParams.has('widgetKey') ? urlParams.get('widgetKey') : "3c9988cd1b790d009ea1ecd30fbeedc5";
-  const title = urlParams.has('title') ? urlParams.get('title') : "";
 
   if (mode == 0) {
     id = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1)
@@ -43,9 +42,9 @@ div {
     {/if}
     {#if mode == 3 || mode == 0}
       {#if env.use_swiper_widget}
-        <SwiperWidget base_url={sakura_url} mode={2} widget_id={id} widget_title={title} urlParams={urlParams}></SwiperWidget>
+        <SwiperWidget base_url={sakura_url} mode={2} widget_id={id} urlParams={urlParams}></SwiperWidget>
       {:else}
-        <DiscoveryWidget base_url={sakura_url} mode={2} widget_id={id} widget_title={title} use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
+        <DiscoveryWidget base_url={sakura_url} mode={2} widget_id={id} urlParams={urlParams} use_swiper_widget={env.use_swiper_widget}></DiscoveryWidget>
       {/if}
       
     {/if}

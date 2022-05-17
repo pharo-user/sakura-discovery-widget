@@ -16,7 +16,6 @@
   onMount(readAll);
 
   export let widget_id;
-  export let widget_title;
   export let base_url;
   export let mode;
   export let urlParams;
@@ -32,6 +31,7 @@
   let network_name = '';
 
   let configOptions = {
+    title: "",
     price: true,
     brand: false,
     marquee: false,
@@ -51,14 +51,11 @@
       swiper.swiper().autoplay.stop();
 
     [items, title, network_name, widget_description] = await fetchById(base_url, mode, widget_id);
-
-    if (!widget_title)
-      widget_title = title;
  
     if (widget_id.length >= 32) {
       let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
       
-      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border", "networkedlabel", "networkedlink", "use_utm"]).forEach(
+      (["title", "price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border", "networkedlabel", "networkedlink", "use_utm"]).forEach(
         function (value) {          
           if (fetchedParams)
             if (typeof fetchedParams[value] !== "undefined")
@@ -69,6 +66,9 @@
         }
       )
     }
+
+    if (!configOptions.title)
+      configOptions.title = title;
 
     topBorder = (configOptions.border & 1) != 0;
     bottomBorder = (configOptions.border & 2) != 0;
@@ -206,7 +206,7 @@
 <div use:lazyLoad on:viewed={() => viewed()}>
 <div class="top-container">
   <div class="heading-item1">
-    {widget_title}
+    {configOptions.title}
   </div>
   <div class="heading-item2">
     <div class="networked-by">
