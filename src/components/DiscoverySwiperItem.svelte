@@ -11,6 +11,8 @@
   export let mode;
   export let companyNetworkId;
   export let configOptions;
+  export let networkName;
+  export let widgetTitle;
 
   function decode_i18n(d) {
   if (typeof d == "string")
@@ -23,14 +25,6 @@
     return d.en;
   return "";
   }
-
-  let networkName = "NETWORK NAME";
-  let networkLogo = "network.png";
-  let description = "Duis a eleifend nibh, eu tempor mauris. Etiam a velit pretium, ultrices leo sit amet, tincidunt diam. Vestibulum quis";
-  let membersCount = 15;
-  let payingRate = 0; 
-  let mailAddress = "helloworld@hello.com";
-  let widgetKey = null;
 
 	let picture_url;
 	let item_url;
@@ -49,16 +43,25 @@
       await logEvent("click", base_url, mode, id, companyNetworkId);
   }
   
+  function getUtmParams(network, title) {
+    return "&utm_source=" + "Sakura" +
+      "&utm_medium="+encodeURI(network)+
+      "&utm_campaign=" + encodeURI(title);
+  }
+
   async function readAll() {
     const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
       picture_url = (data.photo !== undefined && data.photo !== null) ? "https://www.sakura.eco/media/" + data.photo : null;
-      item_url = data.url;
       item_title = decode_i18n(data.title_i18n);
       item_description = decode_i18n(data.description_i18n);
       price = data.price;
       currency = data.currency;
       brand = decode_i18n(data.brand);
+      if (configOptions.use_utm)
+        item_url = data.url + getUtmParams(networkName, widgetTitle);
+      else
+        item_url = data.url;
     }
   }
 

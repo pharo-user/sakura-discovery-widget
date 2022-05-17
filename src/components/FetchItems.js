@@ -51,7 +51,7 @@
         };
         items = shuffle(items);
         console.log(items);
-        return [items,decode_i18n(d.title),decode_i18n(d.description)];
+        return [items,decode_i18n(d.title),decode_i18n(d.name),decode_i18n(d.description)];
       })
   }
 

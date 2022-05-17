@@ -23,12 +23,13 @@
 
   let items = [];
   let title;
-    let swiper;
+  let swiper;
   let widgetShown = false;
   let slideAutoChanged = false;
   let topBorder = false;
   let bottomBorder = false;
   let widget_description = '';
+  let network_name = '';
 
   let configOptions = {
     price: true,
@@ -40,7 +41,8 @@
     size: 1,
     border: 0,
     networkedlabel: null,
-    networkedlink: "https://sakura.eco"
+    networkedlink: "https://sakura.eco",
+    use_utm: false
   };
 
   async function readAll() {
@@ -48,7 +50,7 @@
     if (swiper)
       swiper.swiper().autoplay.stop();
 
-    [items, title, widget_description] = await fetchById(base_url, mode, widget_id);
+    [items, title, network_name, widget_description] = await fetchById(base_url, mode, widget_id);
 
     if (!widget_title)
       widget_title = title;
@@ -56,7 +58,7 @@
     if (widget_id.length >= 32) {
       let fetchedParams = await fetchParamsByWidgetKey(base_url, widget_id);
       
-      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border", "networkedlabel", "networkedlink"]).forEach(
+      (["price", "brand", "marquee", "autoscroll", "productDetail", "networkDetail", "size", "border", "networkedlabel", "networkedlink", "use_utm"]).forEach(
         function (value) {          
           if (fetchedParams)
             if (typeof fetchedParams[value] !== "undefined")
@@ -243,7 +245,7 @@
    >
    {#each items as item, i}
       <SwiperSlide>
-        <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id} configOptions={configOptions}></DiscoverySwiperItem>
+        <DiscoverySwiperItem base_url={base_url} id={item} mode={mode} companyNetworkId={widget_id} configOptions={configOptions} networkName={network_name} widgetTitle={title}></DiscoverySwiperItem>
       </SwiperSlide>
    {/each}
   </Swiper>
