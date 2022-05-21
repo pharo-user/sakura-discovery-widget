@@ -254,7 +254,9 @@
     </a>
   {:else}
   <div>
-  Loading
+    <div class="the-picture">
+    </div>
+    <div class="the-name">Loading</div>
   </div>
   {/if}
 </div>
