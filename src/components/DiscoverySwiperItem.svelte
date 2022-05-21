@@ -164,7 +164,7 @@
   .the-picture {
     width: 210px;
     height: 266.53px;
-    background-color: white;
+    background-color: transparent;
     margin-bottom: 20px;
   }
   item_url, .item-anchor {
@@ -172,7 +172,6 @@
     text-align: center;
     color: inherit;
   }
-
   .the-name {
     text-transform: uppercase;
     font-weight: 600;
@@ -213,7 +212,6 @@
     .the-picture {      
       width: 120px;
       height: 152.3px;
-      background-color: white;
       margin-bottom: 4px;
     }
     .the-name, .the-brand, .the-price {
