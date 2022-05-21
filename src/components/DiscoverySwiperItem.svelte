@@ -163,6 +163,7 @@
   }
   .the-picture {
     width: 210px;
+    height: 266.53px;
     background-color: white;
     margin-bottom: 20px;
   }
@@ -211,6 +212,7 @@
     }
     .the-picture {      
       width: 120px;
+      height: 152.3px;
       background-color: white;
       margin-bottom: 4px;
     }
