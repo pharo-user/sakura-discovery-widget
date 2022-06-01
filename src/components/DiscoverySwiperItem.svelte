@@ -49,6 +49,15 @@
       "&utm_campaign=" + encodeURI(title);
   }
 
+  $ : {
+    if (configOptions.use_utm) {
+      if (item_url) {
+        console.log("rqwerwqerqwer234: ", item_title, configOptions.use_utm)
+
+        item_url = item_url + ((item_url.indexOf("?") == -1)? "?" : "&") + getUtmParams(networkName, widgetTitle);
+      }
+    }
+  }
   async function readAll() {
     const {msg, data} = await fetchById(base_url, id);
     if (msg == "found") {
@@ -58,10 +67,8 @@
       price = data.price;
       currency = data.currency;
       brand = decode_i18n(data.brand);
-      if (configOptions.use_utm)
-        item_url = data.url + ((data.url.indexOf("?") == -1)? "?" : "&") + getUtmParams(networkName, widgetTitle);
-      else
-        item_url = data.url;
+      console.log("qwerwaqlkfsazdf23432: ", item_title, configOptions.use_utm)
+      item_url = data.url;
     }
   }
 
