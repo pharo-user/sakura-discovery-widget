@@ -44,7 +44,7 @@
   }
   
   function getUtmParams(network, title) {
-    return "&utm_source=" + "Sakura" +
+    return "utm_source=" + "Sakura" +
       "&utm_medium="+encodeURI(network)+
       "&utm_campaign=" + encodeURI(title);
   }
@@ -59,7 +59,7 @@
       currency = data.currency;
       brand = decode_i18n(data.brand);
       if (configOptions.use_utm)
-        item_url = data.url + getUtmParams(networkName, widgetTitle);
+        item_url = data.url + ((data.url.indexOf("?") == -1)? "?" : "&") + getUtmParams(networkName, widgetTitle);
       else
         item_url = data.url;
     }
